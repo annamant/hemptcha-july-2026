@@ -1,0 +1,1348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HempTcha™ — Field Day &amp; Green Hour</title>
+<meta name="description" content="Ten thousand years old. Never once a drink. Two hemp leaf drinks — Field Day and Green Hour. Organic, European, naturally without caffeine. London, this autumn.">
+<meta name="theme-color" content="#04120C">
+<meta property="og:type" content="website">
+<meta property="og:title" content="HempTcha™ — Field Day &amp; Green Hour">
+<meta property="og:description" content="Ten thousand years old. Never once a drink. Two hemp leaf drinks, poured in London this autumn.">
+<meta property="og:site_name" content="HempTcha">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HempTcha™ — Field Day &amp; Green Hour">
+<meta name="twitter:description" content="Ten thousand years old. Never once a drink. Two hemp leaf drinks, poured in London this autumn.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2304120C'/%3E%3Crect x='24' y='24' width='16' height='16' transform='rotate(45 32 32)' fill='%23C6A34C'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#04120C;         /* lacquer */
+  --deep:#082016;
+  --malachite:#0C4A34;
+  --jade:#1E7A56;
+  --bone:#F6F2E7;
+  --gold:#C6A34C;
+  --gold-dim:rgba(198,163,76,.34);
+  --hair:rgba(246,242,231,.14);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:104px}
+::selection{background:var(--gold);color:var(--void)}
+.skip{position:absolute;left:-9999px;top:0;z-index:99;background:var(--gold);color:var(--void);
+  padding:12px 22px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
+.skip:focus{left:0}
+body{background:var(--void);color:var(--bone);
+  font-family:'Jost',system-ui,sans-serif;font-weight:300;font-size:17px;line-height:1.65;overflow-x:hidden}
+h1,h2,h3,.ser{font-family:'Bodoni Moda',Georgia,serif;font-weight:400;line-height:1.06;letter-spacing:-0.01em}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+@media(min-width:820px){.wrap{padding:0 52px}}
+.lbl{font-family:'Jost';font-weight:400;font-size:10.5px;letter-spacing:0.26em;text-transform:uppercase;color:var(--gold)}
+.rule{height:1px;background:var(--gold-dim)}
+
+/* the field */
+.fieldwrap{position:absolute;inset:0;z-index:0;overflow:hidden}
+#field{position:absolute;inset:0;width:100%;height:100%;display:block}
+.fieldwrap::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(4,18,12,.86) 0%, rgba(4,18,12,.30) 34%, rgba(4,18,12,.14) 55%, rgba(4,18,12,.72) 88%, var(--void) 100%),
+    linear-gradient(90deg, rgba(4,18,12,.80) 0%, rgba(4,18,12,.22) 46%, transparent 72%);
+}
+@media(max-width:900px){
+  .fieldwrap::after{background:
+    linear-gradient(180deg, rgba(4,18,12,.88) 0%, rgba(4,18,12,.52) 40%, rgba(4,18,12,.74) 82%, var(--void) 100%)}
+}
+.hero .wrap{position:relative;z-index:2}
+.brush{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:3;
+  font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);opacity:.45;
+  pointer-events:none;transition:opacity .6s ease}
+.brush.gone{opacity:0}
+@media(max-width:900px){.brush{display:none}}
+.grain{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.055;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")}
+nav,main,footer{position:relative;z-index:3}
+
+/* nav */
+nav{position:sticky;top:0;z-index:10;transition:background .35s ease,border-color .35s ease;
+  border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(4,18,12,.86);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border-bottom-color:var(--hair)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:88px;gap:18px}
+.burger{display:inline-flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;
+  padding:0 10px;margin-left:auto;background:transparent;border:1px solid var(--hair);cursor:pointer}
+.burger span{display:block;height:1px;background:var(--bone);transition:.25s}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(3px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){transform:translateY(-3px) rotate(-45deg)}
+@media(min-width:900px){.burger{display:none}}
+.mnav{display:none;background:rgba(4,18,12,.97);border-bottom:1px solid var(--hair)}
+.mnav.open{display:block}
+.mnav a{display:block;padding:18px 0;text-decoration:none;font-size:13px;letter-spacing:.18em;
+  text-transform:uppercase;opacity:.8;border-top:1px solid var(--hair)}
+.mnav a:hover{color:var(--gold);opacity:1}
+@media(min-width:900px){.mnav{display:none!important}}
+.mark{font-family:'Bodoni Moda';font-weight:400;font-size:23px;letter-spacing:.03em}
+.mark sup{font-size:9px;vertical-align:super;letter-spacing:0}
+.nav-links{display:none;gap:34px;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.nav-links a{text-decoration:none;opacity:.65}
+.nav-links a:hover{opacity:1;color:var(--gold)}
+@media(min-width:900px){.nav-links{display:flex}}
+.nav-cta{text-decoration:none;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);border:1px solid var(--gold-dim);padding:11px 20px;transition:.2s}
+.nav-cta:hover{background:var(--gold);color:var(--void);border-color:var(--gold)}
+
+/* hero */
+.hero{position:relative;padding:64px 0 104px;overflow:hidden;min-height:88vh;display:flex;flex-direction:column;justify-content:center}
+.hero-grid{display:grid;gap:56px;align-items:center}
+@media(min-width:960px){.hero-grid{grid-template-columns:1.08fr .92fr;gap:64px}}
+.hero h1{font-size:clamp(3rem,8vw,5.6rem);max-width:12ch;margin-top:30px}
+.hero h1 i{font-style:italic;color:var(--gold)}
+.lede{font-size:clamp(1.15rem,2.4vw,1.5rem);margin-top:34px;max-width:30ch;font-weight:300;opacity:.9}
+.dry{margin-top:20px;max-width:40ch;opacity:.62;font-size:16px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:26px;align-items:center;margin-top:44px}
+.btn{display:inline-block;background:var(--gold);color:var(--void);text-decoration:none;
+  padding:17px 38px;border:none;cursor:pointer;font-family:'Jost';font-weight:400;font-size:12.5px;
+  letter-spacing:.2em;text-transform:uppercase;transition:.2s}
+.btn:hover{background:#dcb861}
+.btn-q{text-decoration:none;font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+  opacity:.6;border-bottom:1px solid var(--hair);padding-bottom:4px}
+.btn-q:hover{opacity:1}
+
+/* cans — editorial spine, v11 */
+.stage{display:flex;justify-content:center;align-items:flex-end;gap:50px;min-height:460px}
+.can{position:relative;width:128px;height:340px;
+  transition:transform .55s cubic-bezier(.2,.8,.2,1),filter .55s ease;
+  filter:drop-shadow(0 32px 40px rgba(0,0,0,.42))}
+.stage .can.field{transform:rotate(-3deg) translateY(20px)}
+.stage .can.matcha{transform:rotate(2.5deg)}
+.stage:hover .can.field{transform:rotate(-3deg) translateY(4px)}
+.stage:hover .can.matcha{transform:rotate(2.5deg) translateY(-14px)}
+.stage:hover .can{filter:drop-shadow(0 46px 56px rgba(0,0,0,.56))}
+
+.can-frame{position:absolute;inset:0;border-radius:3px;overflow:hidden;
+  display:flex;flex-direction:column;padding:18px 14px 16px}
+.field .can-frame{background:linear-gradient(172deg,#f6edd7 0%,#ece1c5 58%,#d6c6a3 100%);color:#1d2e23}
+.matcha .can-frame{background:linear-gradient(172deg,#0c2f23 0%,#061510 100%);color:var(--bone)}
+.can-frame::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background:radial-gradient(120% 60% at 30% 0%,rgba(255,255,255,.18),transparent 60%)}
+.matcha .can-frame::before{background:radial-gradient(120% 60% at 30% 0%,rgba(255,255,255,.06),transparent 60%)}
+
+.can-head{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:baseline;font-size:6.5px;letter-spacing:.28em;text-transform:uppercase;opacity:.55}
+.can-head .num{font-family:'Bodoni Moda';font-style:italic;font-size:14px;letter-spacing:0;opacity:.9}
+
+.can-spine{position:absolute;left:42px;top:26px;bottom:24px;width:1px;background:currentColor;opacity:.26;z-index:1}
+
+.can-vname{position:absolute;left:18px;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;
+  font-family:'Bodoni Moda';font-style:italic;font-size:30px;letter-spacing:.02em;line-height:1;opacity:.94;z-index:2}
+
+.can-field{position:absolute;left:56px;right:16px;top:52px;bottom:46px;z-index:2;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.can-leaf{width:48px;height:48px;opacity:.8;margin-bottom:16px;flex:none}
+.can-note{font-size:6.5px;letter-spacing:.24em;text-transform:uppercase;line-height:1.7;opacity:.55;max-width:13ch}
+
+.can-foot{position:absolute;left:14px;right:14px;bottom:16px;z-index:2;
+  display:flex;justify-content:space-between;align-items:baseline;font-size:6.5px;letter-spacing:.28em;text-transform:uppercase;opacity:.5}
+.can-foot .vol{font-family:'Bodoni Moda';font-style:italic;font-size:11px;letter-spacing:0;opacity:.85}
+
+.can .dew{position:absolute;inset:16px 12px 16px;z-index:3;pointer-events:none;overflow:hidden;border-radius:2px}
+.drop{position:absolute;width:2px;border-radius:2px;background:rgba(255,255,255,.28);animation:run linear infinite}
+.field .drop{background:rgba(29,46,35,.12)}
+@keyframes run{0%{transform:translateY(-10px);opacity:0}12%{opacity:1}100%{transform:translateY(300px);opacity:0}}
+
+/* section cans */
+.chill{position:relative;display:flex;justify-content:center;align-items:center;min-height:410px}
+.chillcan,.duskcan{position:relative;z-index:1;width:146px;height:386px;filter:drop-shadow(0 34px 46px rgba(0,0,0,.48))}
+.duskcan{transform:translateX(46px) rotate(2.5deg)}
+.chillcan .can-vname,.duskcan .can-vname{font-size:34px}
+.chillcan .can-leaf,.duskcan .can-leaf{width:54px;height:54px}
+@media(max-width:520px){.duskcan{transform:translateX(20px) rotate(2.5deg)}}
+
+.spec{display:flex;flex-wrap:wrap;gap:0 52px;margin-top:74px;padding-top:24px;border-top:1px solid var(--gold-dim)}
+.spec div{padding:8px 0}
+.spec .lbl{display:block;margin-bottom:7px;opacity:.85}
+.spec strong{font-family:'Bodoni Moda';font-weight:400;font-size:17px}
+
+/* story */
+.story{padding:110px 0;border-top:1px solid var(--hair);background:var(--deep)}
+.story h2{font-size:clamp(2.1rem,5.4vw,3.6rem);max-width:15ch;margin-top:20px}
+.story h2 i{font-style:italic;color:var(--gold)}
+.sgrid{display:grid;gap:36px;margin-top:64px}
+@media(min-width:820px){.sgrid{grid-template-columns:repeat(3,1fr);gap:52px}}
+.sgrid .n{font-family:'Bodoni Moda';font-size:2.6rem;color:var(--gold);opacity:.5;line-height:1;margin-bottom:16px}
+.sgrid h3{font-size:1.35rem;margin-bottom:12px}
+.sgrid p{font-size:15.5px;opacity:.7}
+
+/* drinks */
+.drinks{padding:110px 0}
+.drinks h2{font-size:clamp(2.1rem,5.4vw,3.6rem);max-width:14ch;margin-top:20px}
+.drinks .sub{margin-top:24px;max-width:44ch;opacity:.68}
+.dgrid{display:grid;gap:56px;margin-top:70px}
+@media(min-width:900px){.dgrid{grid-template-columns:1fr 1fr;gap:70px}}
+.card{position:relative}
+.band{height:5px;background:linear-gradient(90deg,var(--malachite),var(--jade),var(--malachite),var(--gold-dim));margin-bottom:28px}
+.card .hr{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.card h3{font-size:clamp(2.4rem,5vw,3.2rem);margin-bottom:8px}
+.card .fmt{font-size:13px;letter-spacing:.12em;text-transform:uppercase;opacity:.5;margin-bottom:26px}
+.card p{font-size:16px;opacity:.82;max-width:44ch}
+.card p+p{margin-top:15px}
+.kick{font-family:'Bodoni Moda';font-style:italic;font-size:1.3rem;margin-top:26px;padding-top:22px;
+  border-top:1px solid var(--hair);max-width:30ch;color:var(--bone)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.chip{border:1px solid var(--hair);padding:7px 14px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.65}
+
+/* serve */
+.serve{padding:104px 0;background:var(--deep);border-top:1px solid var(--hair)}
+.serve h2{font-size:clamp(2rem,5vw,3.2rem);max-width:16ch;margin-top:20px}
+.serve .sub{margin-top:24px;max-width:44ch;opacity:.68}
+.vgrid{display:grid;gap:34px;margin-top:60px}
+@media(min-width:820px){.vgrid{grid-template-columns:repeat(3,1fr);gap:48px}}
+.v{border-top:1px solid var(--gold-dim);padding-top:24px;position:relative}
+.v::before{content:'';position:absolute;top:-1px;left:0;width:0;height:1px;background:var(--gold);transition:width .6s ease}
+.v:hover::before{width:100%}
+.vis{height:160px;display:flex;align-items:flex-end;margin-bottom:20px}
+.vis svg{display:block;overflow:visible}
+.vis .glassline{fill:none;stroke:rgba(246,242,231,.55);stroke-width:1.5;stroke-linecap:round}
+.vis .goldline{fill:none;stroke:var(--gold);stroke-width:1.2;stroke-linecap:round}
+.vis .liq{fill:rgba(30,122,86,.55)}
+@keyframes ice-bob{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(4px) rotate(3deg)}}
+.ice{animation:ice-bob 5.5s ease-in-out infinite;transform-origin:70px 100px}
+@keyframes peel-sway{0%,100%{transform:rotate(0deg)}50%{transform:rotate(-5deg)}}
+.peel{animation:peel-sway 7s ease-in-out infinite;transform-origin:96px 46px}
+@keyframes head-settle{0%{opacity:.9;transform:scaleY(1)}72%{opacity:.3;transform:scaleY(.45)}100%{opacity:.9;transform:scaleY(1)}}
+.head{animation:head-settle 9s ease-in-out infinite;transform-origin:70px 60px}
+@keyframes bub-rise{0%{transform:translateY(0);opacity:0}18%{opacity:.7}90%{opacity:.5}100%{transform:translateY(-26px);opacity:0}}
+.bub{animation:bub-rise 4s linear infinite}
+.bub.b2{animation-delay:1.3s}.bub.b3{animation-delay:2.6s}
+@keyframes bar-glow{0%,100%{opacity:.25}50%{opacity:.6}}
+.glow{animation:bar-glow 8s ease-in-out infinite}
+@keyframes bar-shine{0%,100%{transform:translateX(-10px)}50%{transform:translateX(10px)}}
+.shine{animation:bar-shine 9s ease-in-out infinite}
+.v h3{font-size:1.25rem;margin-bottom:11px}
+.v p{font-size:15px;opacity:.7}
+
+/* taste */
+.taste{padding:104px 0}
+.taste h2{font-size:clamp(2rem,5vw,3.2rem);max-width:15ch;margin-top:20px}
+.scale{margin-top:58px;display:grid;gap:30px;max-width:800px}
+.axis .row{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.18em;
+  text-transform:uppercase;opacity:.5;margin-bottom:12px}
+.track{height:1px;background:var(--hair);position:relative}
+.pip{position:absolute;top:50%;width:12px;height:12px;transform:translate(-50%,-50%) rotate(45deg)}
+.pip.a{background:var(--bone)}
+.pip.b{background:var(--gold)}
+.legend{display:flex;gap:30px;margin-top:42px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;flex-wrap:wrap;opacity:.7}
+.legend i{width:10px;height:10px;display:inline-block;margin-right:9px;transform:rotate(45deg)}
+
+/* answers */
+.ans{padding:100px 0;background:var(--deep);border-top:1px solid var(--hair)}
+.ans h2{font-size:clamp(2rem,5vw,3rem);max-width:16ch;margin-top:20px}
+.agrid{display:grid;gap:36px;margin-top:56px}
+@media(min-width:820px){.agrid{grid-template-columns:repeat(3,1fr);gap:52px}}
+.agrid h3{font-size:1.25rem;margin-bottom:12px}
+.agrid p{font-size:15px;opacity:.7}
+.quiet{margin-top:56px;padding-top:26px;border-top:1px solid var(--hair);font-size:14px;opacity:.5;max-width:54ch}
+
+/* queue */
+.join{padding:110px 0 116px;text-align:left}
+.join h2{font-size:clamp(2.4rem,6.4vw,4.4rem);max-width:14ch;margin-top:22px}
+.join h2 i{font-style:italic;color:var(--gold)}
+.join .why{margin-top:26px;max-width:42ch;font-size:17px;opacity:.75}
+.gets{list-style:none;margin:38px 0 42px;display:grid;gap:0;max-width:46ch}
+.gets li{display:flex;gap:16px;font-size:15.5px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--hair);opacity:.85}
+.gets li i{flex:0 0 auto;width:6px;height:6px;background:var(--gold);margin-top:10px;transform:rotate(45deg)}
+.form{display:flex;flex-wrap:wrap;gap:14px;max-width:540px}
+.form input{flex:1;min-width:230px;padding:16px 4px;border:none;border-bottom:1px solid var(--gold-dim);
+  background:transparent;font-family:'Jost';font-weight:300;font-size:17px;color:var(--bone)}
+.form input::placeholder{color:rgba(246,242,231,.35)}
+.form input:focus{outline:none;border-bottom-color:var(--gold)}
+.small{font-size:13px;opacity:.45;margin-top:24px;max-width:44ch}
+.done{display:none;max-width:540px}
+.done.on{display:block}
+.pos{font-family:'Bodoni Moda';font-size:clamp(3.4rem,10vw,5.4rem);line-height:1;color:var(--gold)}
+.pos span{font-size:.28em;opacity:.6;letter-spacing:.14em}
+.done p{margin-top:18px;max-width:40ch;opacity:.75}
+.share{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.share button{font-family:'Jost';font-weight:400;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
+  background:transparent;border:1px solid var(--gold-dim);color:var(--gold);padding:13px 22px;cursor:pointer;transition:.2s}
+.share button:hover{background:var(--gold);color:var(--void)}
+
+footer{border-top:1px solid var(--hair);padding:46px 0 66px}
+.foot{display:flex;flex-wrap:wrap;gap:26px;justify-content:space-between}
+.legal{max-width:62ch;font-size:11.5px;opacity:.58;line-height:1.85}
+.fnav{display:flex;gap:26px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;flex-wrap:wrap;margin-top:6px}
+.fnav a{text-decoration:none;opacity:.55}
+.fnav a:hover{opacity:1;color:var(--gold)}
+
+/* ---------- the pour ---------- */
+.pour{position:relative;height:78vh;min-height:520px;overflow:hidden;background:var(--void);
+  display:flex;align-items:center;justify-content:center;text-align:center}
+.pour .liq{position:absolute;inset:0;pointer-events:none;
+  clip-path:inset(100% 0 0 0);transition:clip-path .12s linear}
+.pour .liq canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.pour .liq .meniscus{position:absolute;left:0;right:0;height:3px;top:0;
+  background:linear-gradient(90deg,transparent,rgba(246,255,244,.7),rgba(232,198,120,.45),rgba(246,255,244,.7),transparent);
+  box-shadow:0 0 18px rgba(200,240,210,.35);z-index:2;pointer-events:none;
+  opacity:0;transition:opacity .2s}
+.pour .liq.filling .meniscus{opacity:1}
+.pour .say{position:relative;z-index:3;mix-blend-mode:difference;pointer-events:none}
+.pour .say h2{font-size:clamp(2.4rem,8vw,5.4rem);color:#fff}
+.pour .say p{margin-top:18px;font-size:13px;letter-spacing:.26em;text-transform:uppercase;color:#fff;opacity:.7}
+
+/* ---------- the powder: matcha resting on the ground, stirred by a breeze ---------- */
+.powder{position:relative;height:72vh;min-height:460px;overflow:hidden;background:#0a1f14;
+  display:flex;align-items:center;justify-content:center;text-align:center}
+.powder canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.powder .say{position:relative;z-index:3;mix-blend-mode:difference;pointer-events:none}
+.powder .say h2{font-size:clamp(2.3rem,7.4vw,4.8rem);color:#fff}
+.powder .say p{margin-top:16px;font-size:12.5px;letter-spacing:.26em;text-transform:uppercase;color:#fff;opacity:.7}
+.dust-hint{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:3;
+  font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);opacity:.5;
+  pointer-events:none;transition:opacity .6s ease}
+.dust-hint.gone{opacity:0}
+@media(max-width:900px){.dust-hint{display:none}}
+
+/* ---------- the two worlds ---------- */
+.world{position:relative;overflow:hidden;padding:104px 0}
+.world .inner{display:grid;gap:48px;align-items:center}
+@media(min-width:960px){.world .inner{grid-template-columns:1fr .82fr;gap:70px}}
+.world.dawn{background:linear-gradient(180deg,#F6F2E7,#e9e2cf);color:var(--deep)}
+.world.dawn .lbl{color:#8a6a20}
+.world.dawn .kick{color:var(--deep);border-top-color:rgba(4,18,12,.16)}
+.world.dawn .chip{border-color:rgba(4,18,12,.2);opacity:.7}
+.world.dusk{background:linear-gradient(180deg,#061a12,#04120C)}
+.world h3{font-size:clamp(2.8rem,7vw,4.6rem);margin:14px 0 6px}
+.world .fmt{font-size:12px;letter-spacing:.2em;text-transform:uppercase;opacity:.5;margin-bottom:26px}
+.world p{font-size:16.5px;opacity:.85;max-width:44ch}
+.world p+p{margin-top:15px}
+.world .band{height:4px;width:110px;background:linear-gradient(90deg,var(--gold),transparent)}
+
+/* glare sweep on the pale world */
+.glare{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(104deg,transparent 34%,rgba(255,236,180,.55) 48%,transparent 62%);
+  transform:translateX(-40%);animation:sweep 13s ease-in-out infinite}
+@keyframes sweep{0%,100%{transform:translateX(-42%)}50%{transform:translateX(42%)}}
+
+/* swirl canvas on the dark world */
+.swirlbox{position:relative;display:flex;justify-content:center;align-items:center;min-height:400px}
+#swirl{position:absolute;left:50%;top:50%;transform:translate(-62%,-52%);
+  width:320px;height:320px;border-radius:50%;display:block;
+  box-shadow:0 40px 80px -30px rgba(0,0,0,.9), inset 0 0 60px rgba(0,0,0,.5)}
+
+/* ---------- the sip ---------- */
+.sip{padding:104px 0;background:var(--deep);border-top:1px solid var(--hair);overflow:hidden}
+.sip h2{font-size:clamp(2rem,5vw,3.2rem);max-width:15ch;margin-top:20px}
+.siprail{position:relative;margin-top:64px;padding-top:34px}
+.siprail .base{position:absolute;top:0;left:0;right:0;height:1px;background:var(--hair)}
+.siprail .prog{position:absolute;top:0;left:0;height:1px;width:0;background:var(--gold);transition:width 7.4s linear}
+.siprail.go .prog{width:100%}
+.notes{display:grid;gap:26px}
+@media(min-width:820px){.notes{grid-template-columns:repeat(4,1fr);gap:32px}}
+.note{opacity:0;transform:translateY(12px);transition:opacity .9s ease,transform .9s ease}
+.siprail.go .note{opacity:1;transform:none}
+.siprail.go .note:nth-child(1){transition-delay:.15s}
+.siprail.go .note:nth-child(2){transition-delay:1.9s}
+.siprail.go .note:nth-child(3){transition-delay:3.7s}
+.siprail.go .note:nth-child(4){transition-delay:5.5s}
+.note .sec{font-family:'Bodoni Moda';font-size:2rem;color:var(--gold);opacity:.55;line-height:1}
+.note h3{font-size:1.3rem;margin:12px 0 8px}
+.note p{font-size:14.5px;opacity:.65}
+.sipnote{margin-top:44px;font-size:13px;letter-spacing:.2em;text-transform:uppercase;opacity:.4}
+
+.rv{opacity:0;transform:translateY(16px);transition:opacity .9s ease,transform .9s ease}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.drop{display:none}}
+:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+</style>
+</head>
+<body>
+<a class="skip" href="#story">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+
+<nav id="nav" aria-label="Main">
+  <div class="wrap nav-in">
+    <div class="mark">HempTcha<sup>™</sup></div>
+    <div class="nav-links">
+      <a href="#story">The plant</a>
+      <a href="#drinks">The drinks</a>
+      <a href="#serve">How to serve</a>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px">
+      <a class="nav-cta" href="#join">The queue</a>
+      <button class="burger" id="burger" aria-expanded="false" aria-controls="mnav" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mnav" id="mnav">
+    <div class="wrap">
+      <a href="#story">The plant</a>
+      <a href="#drinks">The drinks</a>
+      <a href="#serve">How to serve</a>
+      <a href="#join">The queue</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<header class="hero">
+  <div class="fieldwrap" aria-hidden="true"><canvas id="field"></canvas></div>
+  <div class="brush" id="brush">Run your hand through it</div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="lbl">Hemp Matcha · London · This autumn</div>
+      <h1>Ten thousand years old. <i>Never once a drink.</i></h1>
+      <p class="lede">Hemp leaf has been prized for as long as anything has been grown. Nobody thought to put it in a glass. We did — twice.</p>
+      <p class="dry">Field Day and Green Hour. Organic, European, and naturally without caffeine — we didn't take it out, it was never there.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#join">Join the queue</a>
+        <a class="btn-q" href="#drinks">The two drinks</a>
+      </div>
+    </div>
+    <div class="stage" aria-hidden="true">
+      <div class="can field" id="t1">
+        <div class="can-frame">
+          <div class="can-head"><span>HempTcha</span><span class="num">01</span></div>
+          <div class="can-spine"></div>
+          <div class="can-vname">Field Day</div>
+          <div class="can-field">
+            <svg class="can-leaf" viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M24 6 C 16 16, 14 28, 24 42 C 34 28, 32 16, 24 6 Z" fill="none" stroke="currentColor" stroke-width="1.1"/>
+              <path d="M24 12 L 24 42 M 24 18 L 18 22 M 24 18 L 30 22 M 24 24 L 16 29 M 24 24 L 32 29 M 24 30 L 19 35 M 24 30 L 29 35" fill="none" stroke="currentColor" stroke-width=".9" opacity=".7"/>
+            </svg>
+            <div class="can-note">White peach · citrus · cut grass</div>
+          </div>
+          <div class="can-foot"><span>Iced hemp leaf tea</span><span class="vol">250</span></div>
+        </div>
+        <div class="dew"></div>
+      </div>
+      <div class="can matcha" id="t2">
+        <div class="can-frame">
+          <div class="can-head"><span>HempTcha</span><span class="num">02</span></div>
+          <div class="can-spine"></div>
+          <div class="can-vname">Green Hour</div>
+          <div class="can-field">
+            <svg class="can-leaf" viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M24 6 C 16 16, 14 28, 24 42 C 34 28, 32 16, 24 6 Z" fill="none" stroke="currentColor" stroke-width="1.1"/>
+              <path d="M24 12 L 24 42 M 24 18 L 18 22 M 24 18 L 30 22 M 24 24 L 16 29 M 24 24 L 32 29 M 24 30 L 19 35 M 24 30 L 29 35" fill="none" stroke="currentColor" stroke-width=".9" opacity=".7"/>
+            </svg>
+            <div class="can-note">Stone-ground · creamy · deep green</div>
+          </div>
+          <div class="can-foot"><span>Hemp matcha</span><span class="vol">250</span></div>
+        </div>
+        <div class="dew"></div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="spec">
+      <div><span class="lbl">The drinks</span><strong>Field Day · Green Hour</strong></div>
+      <div><span class="lbl">The leaf</span><strong>Organic, European</strong></div>
+      <div><span class="lbl">Caffeine</span><strong>None, naturally</strong></div>
+      <div><span class="lbl">First run</span><strong>London, autumn</strong></div>
+    </div>
+  </div>
+</header>
+
+<section class="story" id="story">
+  <div class="wrap">
+    <div class="rv">
+      <span class="lbl">The oldest thing on the menu</span>
+      <h2>One of the first plants we ever grew. <i>The last one to reach the glass.</i></h2>
+    </div>
+    <div class="sgrid rv">
+      <div>
+        <div class="n">I.</div>
+        <h3>Older than the wheel</h3>
+        <p>Hemp is among the earliest plants humans ever cultivated — ten thousand years of being grown, eaten, spun and traded across three continents. Few things on earth have been valued for longer.</p>
+      </div>
+      <div>
+        <div class="n">II.</div>
+        <h3>The leaf everyone forgot</h3>
+        <p>All that time, the world used the seed and the stalk. The leaf — green, fragrant, the part that most resembles tea — was never brewed. Nobody had made a drink of it. Not once.</p>
+      </div>
+      <div>
+        <div class="n">III.</div>
+        <h3>So we made two</h3>
+        <p>One brewed like an iced tea. One stone-ground into a fine powder and whisked, matcha style. Both cold, both in the can, both a thing that has genuinely never existed before.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pour" id="pourband">
+  <div class="liq" id="liq">
+    <div class="meniscus" aria-hidden="true"></div>
+    <canvas id="tea" aria-hidden="true"></canvas>
+  </div>
+  <div class="say">
+    <h2>Cold. Green. Poured.</h2>
+    <p>Keep scrolling. You're pouring.</p>
+  </div>
+</section>
+
+<section class="world dawn" id="drinks">
+  <div class="glare" aria-hidden="true"></div>
+  <div class="wrap inner">
+    <div class="rv">
+      <div class="band"></div>
+      <span class="lbl" style="display:block;margin-top:20px">Three in the afternoon</span>
+      <h3>Field Day</h3>
+      <div class="fmt">Iced hemp leaf tea · 250ml</div>
+      <p>Cold, clear and unmistakably green. Cut grass and white peach first, a twist of citrus behind it, then a finish that goes dry and clean instead of sitting sweet on the tongue.</p>
+      <p>Brewed like a proper tea, chilled hard, canned. Nothing in it you'd have to look up.</p>
+      <div class="kick" style="border-top:1px solid rgba(4,18,12,.16);padding-top:22px;margin-top:26px">You will drink this too fast. Everyone does.</div>
+      <div class="chips"><span class="chip">Sharp</span><span class="chip">Bright</span><span class="chip">Low sugar</span></div>
+    </div>
+    <div class="chill rv" aria-hidden="true">
+      <div class="chillcan can field" id="cc">
+        <div class="can-frame">
+          <div class="can-head"><span>HempTcha</span><span class="num">01</span></div>
+          <div class="can-spine"></div>
+          <div class="can-vname">Field Day</div>
+          <div class="can-field">
+            <svg class="can-leaf" viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M24 6 C 16 16, 14 28, 24 42 C 34 28, 32 16, 24 6 Z" fill="none" stroke="currentColor" stroke-width="1.1"/>
+              <path d="M24 12 L 24 42 M 24 18 L 18 22 M 24 18 L 30 22 M 24 24 L 16 29 M 24 24 L 32 29 M 24 30 L 19 35 M 24 30 L 29 35" fill="none" stroke="currentColor" stroke-width=".9" opacity=".7"/>
+            </svg>
+            <div class="can-note">White peach · citrus · cut grass</div>
+          </div>
+          <div class="can-foot"><span>Iced hemp leaf tea</span><span class="vol">250</span></div>
+        </div>
+        <div class="dew"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="powder" id="powderband">
+  <canvas id="dust" aria-hidden="true"></canvas>
+  <div class="dust-hint" id="dusthint">Hover to stir the air</div>
+  <div class="say">
+    <h2>Fine. Green. Restless.</h2>
+    <p>Stone-ground, matcha style — never quite still.</p>
+  </div>
+</section>
+
+<section class="world dusk">
+  <div class="wrap inner">
+    <div class="rv">
+      <div class="band"></div>
+      <span class="lbl" style="display:block;margin-top:20px">Eight in the evening</span>
+      <h3>Green Hour</h3>
+      <div class="fmt">Hemp matcha, ready to drink · 250ml</div>
+      <p>Deep green and faintly thick, the way a good matcha should be. Rounder and sweeter than you expect, a soft creaminess through the middle, and a long grassy finish that stays with you.</p>
+      <p>Stone-ground leaf, whisked and canned. Named for the hour Paris used to stop work and pour something green.</p>
+      <div class="kick">Shake it. Ice. Sit down. It isn't going anywhere.</div>
+      <div class="chips"><span class="chip">Deep</span><span class="chip">Creamy</span><span class="chip">Stone-ground</span></div>
+    </div>
+    <div class="swirlbox rv" aria-hidden="true">
+      <canvas id="swirl" width="320" height="320"></canvas>
+      <div class="duskcan can matcha" id="dc">
+        <div class="can-frame">
+          <div class="can-head"><span>HempTcha</span><span class="num">02</span></div>
+          <div class="can-spine"></div>
+          <div class="can-vname">Green Hour</div>
+          <div class="can-field">
+            <svg class="can-leaf" viewBox="0 0 48 48" aria-hidden="true">
+              <path d="M24 6 C 16 16, 14 28, 24 42 C 34 28, 32 16, 24 6 Z" fill="none" stroke="currentColor" stroke-width="1.1"/>
+              <path d="M24 12 L 24 42 M 24 18 L 18 22 M 24 18 L 30 22 M 24 24 L 16 29 M 24 24 L 32 29 M 24 30 L 19 35 M 24 30 L 29 35" fill="none" stroke="currentColor" stroke-width=".9" opacity=".7"/>
+            </svg>
+            <div class="can-note">Stone-ground · creamy · deep green</div>
+          </div>
+          <div class="can-foot"><span>Hemp matcha</span><span class="vol">250</span></div>
+        </div>
+        <div class="dew"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sip">
+  <div class="wrap">
+    <div class="rv">
+      <span class="lbl">One mouthful, second by second</span>
+      <h2>What actually happens when you drink it.</h2>
+    </div>
+    <div class="siprail rv" id="siprail">
+      <div class="base"></div><div class="prog"></div>
+      <div class="notes">
+        <div class="note">
+          <div class="sec">0s</div>
+          <h3>Cold, then green</h3>
+          <p>The chill lands first. A half-second later the whole thing goes green — cut grass, wet stems, the smell of a garden after rain.</p>
+        </div>
+        <div class="note">
+          <div class="sec">2s</div>
+          <h3>White peach</h3>
+          <p>Something soft and stone-fruity arrives underneath and rounds off the edge. This is the part people don't see coming.</p>
+        </div>
+        <div class="note">
+          <div class="sec">4s</div>
+          <h3>A twist of citrus</h3>
+          <p>It lifts and sharpens across the middle of the tongue, the way good iced tea does when there's lemon nearby.</p>
+        </div>
+        <div class="note">
+          <div class="sec">6s</div>
+          <h3>Dry, and gone</h3>
+          <p>No sugar hanging around, no film left behind. Just a clean grassy echo — and the reason you reach for it again.</p>
+        </div>
+      </div>
+      <p class="sipnote">Field Day. Green Hour runs slower and stays longer.</p>
+    </div>
+  </div>
+</section>
+
+<section class="serve" id="serve">
+  <div class="wrap">
+    <div class="rv">
+      <span class="lbl">How to serve it</span>
+      <h2>It deserves a glass. Give it one.</h2>
+      <p class="sub">This is not a drink for the walk between two places. Three ways we'd pour it, and one we'd rather you didn't.</p>
+    </div>
+    <div class="vgrid rv">
+      <div class="v">
+        <div class="vis" aria-hidden="true">
+          <svg viewBox="0 0 140 150" width="140" height="150">
+            <path class="liq" d="M40,84 Q55,79 70,84 T100,84 L98,134 Q98,140 92,140 L48,140 Q42,140 42,134 Z"/>
+            <g class="ice">
+              <rect x="55" y="80" width="30" height="30" rx="3" transform="rotate(10 70 95)"
+                fill="rgba(246,242,231,.10)" stroke="rgba(246,242,231,.7)" stroke-width="1.2"/>
+              <path d="M61,88 L81,102" stroke="rgba(246,242,231,.25)" stroke-width="1"/>
+            </g>
+            <path class="glassline" d="M34,46 L38,136 Q38,144 47,144 L93,144 Q102,144 102,136 L106,46"/>
+            <path class="glassline" d="M34,46 Q70,52 106,46" opacity=".35"/>
+            <path class="goldline peel" d="M96,46 q10,-12 4,-20 q-5,-7 -12,-2"/>
+          </svg>
+        </div>
+        <h3>Field Day, over one large cube</h3>
+        <p>A tumbler, a single big piece of ice so it doesn't water down, a strip of lemon peel across the top. The citrus in the leaf comes forward and stays there.</p>
+      </div>
+      <div class="v">
+        <div class="vis" aria-hidden="true">
+          <svg viewBox="0 0 140 150" width="140" height="150">
+            <path class="liq" d="M35,55 Q70,62 105,55 Q100,79 70,81 Q40,79 35,55 Z"/>
+            <ellipse class="head" cx="70" cy="58" rx="33" ry="4.5" fill="rgba(226,244,224,.75)"/>
+            <circle class="bub" cx="62" cy="74" r="1.4" fill="rgba(226,244,224,.8)"/>
+            <circle class="bub b2" cx="74" cy="76" r="1.2" fill="rgba(226,244,224,.8)"/>
+            <circle class="bub b3" cx="68" cy="72" r="1" fill="rgba(226,244,224,.8)"/>
+            <path class="glassline" d="M30,48 Q34,82 70,84 Q106,82 110,48"/>
+            <path class="glassline" d="M30,48 Q70,56 110,48" opacity=".35"/>
+            <path class="glassline" d="M70,84 L70,126"/>
+            <path class="glassline" d="M46,131 Q70,138 94,131"/>
+          </svg>
+        </div>
+        <h3>Green Hour, in a coupe</h3>
+        <p>Shake the can hard, pour it cold and unhurried into something with a stem. It holds a fine head for about a minute. That minute is the point.</p>
+      </div>
+      <div class="v">
+        <div class="vis" aria-hidden="true">
+          <svg viewBox="0 0 140 150" width="140" height="150">
+            <ellipse class="glow" cx="70" cy="102" rx="56" ry="36" fill="rgba(198,163,76,.14)"/>
+            <rect x="42" y="78" width="24" height="57" rx="3" fill="rgba(246,242,231,.12)" stroke="rgba(246,242,231,.6)" stroke-width="1.2"/>
+            <line x1="46" y1="92" x2="62" y2="92" stroke="rgba(198,163,76,.5)" stroke-width="1"/>
+            <rect x="76" y="64" width="24" height="71" rx="3" fill="rgba(30,122,86,.35)" stroke="rgba(198,163,76,.5)" stroke-width="1.2"/>
+            <line x1="80" y1="78" x2="96" y2="78" stroke="rgba(198,163,76,.5)" stroke-width="1"/>
+            <g class="shine">
+              <line x1="48" y1="84" x2="48" y2="129" stroke="rgba(255,255,255,.18)" stroke-width="2"/>
+              <line x1="82" y1="70" x2="82" y2="129" stroke="rgba(255,255,255,.18)" stroke-width="2"/>
+            </g>
+            <line x1="22" y1="136" x2="118" y2="136" stroke="rgba(198,163,76,.55)" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <h3>Either one, at the bar</h3>
+        <p>Both are built to sit on a back bar and be ordered out loud. Ask for them by name in the places pouring them this autumn.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="taste">
+  <div class="wrap">
+    <div class="rv">
+      <span class="lbl">Before you commit</span>
+      <h2>Honestly — is this for you?</h2>
+      <p class="sub" style="margin-top:24px;max-width:42ch;opacity:.68">If you drink green tea, fine cider or a good dry vermouth, you'll understand this immediately. If you want something that tastes of cola, you won't, and we'd rather say so than take your money.</p>
+    </div>
+    <div class="scale rv">
+      <div class="axis">
+        <div class="row"><span>Delicate</span><span>Green &amp; grassy</span></div>
+        <div class="track"><span class="pip a" style="left:66%"></span><span class="pip b" style="left:86%"></span></div>
+      </div>
+      <div class="axis">
+        <div class="row"><span>Dry</span><span>Sweet</span></div>
+        <div class="track"><span class="pip a" style="left:33%"></span><span class="pip b" style="left:52%"></span></div>
+      </div>
+      <div class="axis">
+        <div class="row"><span>Light</span><span>Full &amp; creamy</span></div>
+        <div class="track"><span class="pip a" style="left:20%"></span><span class="pip b" style="left:78%"></span></div>
+      </div>
+      <div class="axis">
+        <div class="row"><span>Drink it fast</span><span>Drink it slowly</span></div>
+        <div class="track"><span class="pip a" style="left:26%"></span><span class="pip b" style="left:84%"></span></div>
+      </div>
+    </div>
+    <div class="legend rv">
+      <div><i style="background:var(--bone)"></i>Field Day</div>
+      <div><i style="background:var(--gold)"></i>Green Hour</div>
+    </div>
+  </div>
+</section>
+
+<section class="ans">
+  <div class="wrap">
+    <div class="rv">
+      <span class="lbl">Go on, ask</span>
+      <h2>The three questions everyone asks first.</h2>
+    </div>
+    <div class="agrid rv">
+      <div>
+        <h3>Will it change how I feel?</h3>
+        <p>No. It's the leaf, brewed like tea. Nothing in here alters you — it's a drink, and it's meant to be a very good one.</p>
+      </div>
+      <div>
+        <h3>Where can I drink it?</h3>
+        <p>Anywhere you'd drink a fine tea. A hotel bar, a dinner table, your own kitchen at eleven at night. Nothing to explain to anyone.</p>
+      </div>
+      <div>
+        <h3>What's it actually like?</h3>
+        <p>Green. Properly green. Far closer to iced tea and matcha than to whatever you are currently picturing.</p>
+      </div>
+    </div>
+    <p class="quiet rv">Everything else — the farms, the leaf, how it is made and how it is classified — is written out plainly for anyone who wants it.</p>
+  </div>
+</section>
+
+<section class="join" id="join">
+  <div class="wrap rv">
+    <span class="lbl">The queue</span>
+    <h2>The first run is small. <i>There is a queue.</i></h2>
+    <p class="why">A limited batch, made this autumn, poured in London. It goes to the queue first, then to a short list of bars and rooms we've chosen ourselves. Nowhere else, not yet.</p>
+    <ul class="gets">
+      <li><i></i><span>First claim on the first run, in the order you joined.</span></li>
+      <li><i></i><span>An invitation to the London tasting — Field Day and Green Hour, side by side, properly cold.</span></li>
+      <li><i></i><span>The address of every bar pouring it, the week they get it.</span></li>
+    </ul>
+    <form class="form" id="wl">
+      <input type="email" id="em" name="email" placeholder="your email" aria-label="Email address"
+        autocomplete="email" inputmode="email" spellcheck="false" required>
+      <button class="btn" type="submit">Take my place</button>
+    </form>
+    <p class="small" id="note">One email when it is ready. Nothing else, ever.</p>
+
+    <div class="done" id="done">
+      <div class="pos"><span>No.</span> <b id="num">—</b></div>
+      <div class="lbl" style="opacity:.7">Your place in the queue</div>
+      <p>Every friend who joins on your link moves you up four places. The people at the front drink it before London has heard of it.</p>
+      <div class="share">
+        <button type="button" id="copy">Copy my link</button>
+        <button type="button" id="wa">Send to a friend</button>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <div class="mark">HempTcha<sup>™</sup></div>
+      <div class="fnav">
+        <a href="#story">The plant</a>
+        <a href="#drinks">The drinks</a>
+        <a href="#serve">How to serve</a>
+        <a href="#join">The queue</a>
+      </div>
+    </div>
+    <p class="legal">HempTcha is a herbal infusion made from hemp leaf. No health or medicinal claims are made. Field Day and Green Hour are in development and not yet available for sale; this page is a concept preview and not an offer. © <span id="yr">2026</span> HempTcha.</p>
+  </div>
+</footer>
+
+<script>
+/* ---------- the field ---------- */
+(function(){
+  const cv=document.getElementById('field');
+  if(!cv) return;
+  const ctx=cv.getContext('2d');
+  const still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let W=0,H=0,DPR=1,stalks=[],horizon=0,t=0,raf=null,visible=true;
+  const pointer={x:-9999,y:-9999,on:false};
+
+  function build(){
+    DPR=Math.min(window.devicePixelRatio||1,2);
+    W=cv.clientWidth; H=cv.clientHeight;
+    cv.width=W*DPR; cv.height=H*DPR;
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+    horizon=H*0.30;
+    stalks=[];
+    const density=Math.round(W*(W<700?1.3:1.75));
+    for(let i=0;i<density;i++){
+      // depth 0 = far/hazy, 1 = near/large
+      const d=Math.pow(Math.random(),0.62);
+      const baseY=horizon+(H-horizon)*Math.pow(d,0.86)+ (Math.random()*10-5);
+      const len=(H-horizon)*(0.14+d*0.56)*(0.78+Math.random()*0.44);
+      stalks.push({
+        x:Math.random()*(W+120)-60,
+        y:baseY,
+        len:len,
+        d:d,
+        w:0.5+d*2.3,
+        ph:Math.random()*Math.PI*2,
+        sp:0.5+Math.random()*0.7,
+        lean:(Math.random()-0.5)*0.16,
+        bend:0,
+        nodes:2+Math.floor(Math.random()*3),
+        hue:Math.random()
+      });
+    }
+    stalks.sort((a,b)=>a.d-b.d);
+  }
+
+  function sky(){
+    const g=ctx.createLinearGradient(0,0,0,horizon+40);
+    g.addColorStop(0,'#04120C');
+    g.addColorStop(0.45,'#0a2418');
+    g.addColorStop(0.82,'#37351b');
+    g.addColorStop(1,'#7a5f22');
+    ctx.fillStyle=g; ctx.fillRect(0,0,W,horizon+40);
+
+    // low sun
+    const sx=W*0.74, sy=horizon-2;
+    const s=ctx.createRadialGradient(sx,sy,0,sx,sy,Math.max(W,H)*0.42);
+    s.addColorStop(0,'rgba(255,214,132,0.62)');
+    s.addColorStop(0.16,'rgba(214,168,78,0.30)');
+    s.addColorStop(0.44,'rgba(150,116,48,0.12)');
+    s.addColorStop(1,'rgba(4,18,12,0)');
+    ctx.fillStyle=s; ctx.fillRect(0,0,W,H);
+
+    // ground base
+    const gr=ctx.createLinearGradient(0,horizon,0,H);
+    gr.addColorStop(0,'#3d4a1e');
+    gr.addColorStop(0.35,'#1c3b22');
+    gr.addColorStop(1,'#04120C');
+    ctx.fillStyle=gr; ctx.fillRect(0,horizon,W,H-horizon);
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    sky();
+    const gust=Math.sin(t*0.00042)*0.5+Math.sin(t*0.00017)*0.5;
+
+    for(let i=0;i<stalks.length;i++){
+      const st=stalks[i];
+      const sway=Math.sin(t*0.0011*st.sp+st.ph+st.x*0.006)*(0.06+st.d*0.20)*(0.6+gust*0.8);
+
+      // hand brushing through
+      let push=0;
+      if(pointer.on){
+        const dx=st.x-pointer.x, dy=(st.y-st.len*0.55)-pointer.y;
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        const r=150+st.d*140;
+        if(dist<r){
+          const f=(1-dist/r);
+          push=(dx>0?1:-1)*f*f*(0.55+st.d*0.55);
+        }
+      }
+      st.bend += (push-st.bend)*0.12;
+
+      const a=st.lean+sway+st.bend;
+      const tipX=st.x+Math.sin(a)*st.len*0.62;
+      const tipY=st.y-st.len*Math.cos(a*0.5);
+      const cx=st.x+Math.sin(a)*st.len*0.18;
+      const cy=st.y-st.len*0.55;
+
+      // colour: hazier + goldest toward the sun and the horizon
+      const sunPull=Math.max(0,1-Math.abs(st.x-W*0.74)/(W*0.85));
+      const lum=0.20+st.d*0.34+sunPull*0.26;
+      const warm=0.30+sunPull*0.55-st.d*0.18;
+      const r=Math.round(60+150*warm*lum*1.5);
+      const gcol=Math.round(70+130*lum);
+      const b=Math.round(40+50*lum);
+      const alpha=0.26+st.d*0.62;
+
+      ctx.strokeStyle='rgba('+r+','+gcol+','+b+','+alpha+')';
+      ctx.lineWidth=st.w;
+      ctx.lineCap='round';
+      ctx.beginPath();
+      ctx.moveTo(st.x,st.y);
+      ctx.quadraticCurveTo(cx,cy,tipX,tipY);
+      ctx.stroke();
+
+      // paired leaflets in whorls up the stem — never an isolated fan
+      if(st.d>0.34){
+        const nodes=st.nodes;
+        for(let n=0;n<nodes;n++){
+          const p=0.34+ (n/(nodes))*0.52;
+          const bx=st.x+(tipX-st.x)*p;
+          const by=st.y+(tipY-st.y)*p;
+          const scale=st.len*0.115*(1-p*0.45)*(0.7+st.d*0.8);
+          ctx.lineWidth=st.w*0.5;
+          for(let side=-1;side<=1;side+=2){
+            for(let k=0;k<2;k++){
+              const rise=0.42+k*0.34;              // leaflets angle upward
+              const ex=bx+side*scale*(1.05-k*0.30);
+              const ey=by-scale*rise;
+              ctx.beginPath();
+              ctx.moveTo(bx,by);
+              ctx.quadraticCurveTo(bx+side*scale*0.55,by-scale*rise*0.35,ex,ey);
+              ctx.stroke();
+            }
+          }
+        }
+      }
+
+      // gold rim on the tips catching the sun
+      if(st.d>0.5&&sunPull>0.32){
+        ctx.strokeStyle='rgba(232,198,120,'+(0.06+sunPull*0.16)+')';
+        ctx.lineWidth=st.w*0.8;
+        ctx.beginPath();
+        ctx.moveTo(st.x+(tipX-st.x)*0.72,st.y+(tipY-st.y)*0.72);
+        ctx.lineTo(tipX,tipY);
+        ctx.stroke();
+      }
+    }
+  }
+
+  function loop(){ t+=16; draw(); raf=requestAnimationFrame(loop); }
+
+  function start(){ if(!raf&&!still) raf=requestAnimationFrame(loop); }
+  function stop(){ if(raf){cancelAnimationFrame(raf); raf=null;} }
+
+  const brush=document.getElementById('brush');
+  cv.parentElement.style.pointerEvents='none';
+  document.querySelector('.hero').addEventListener('pointermove',e=>{
+    const r=cv.getBoundingClientRect();
+    pointer.x=e.clientX-r.left; pointer.y=e.clientY-r.top; pointer.on=true;
+    if(brush) brush.classList.add('gone');
+  });
+  document.querySelector('.hero').addEventListener('pointerleave',()=>{pointer.on=false;});
+
+  build(); draw(); start();
+
+  let rt=null;
+  window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{build();draw();},180)});
+  new IntersectionObserver(es=>{es.forEach(e=>{ e.isIntersecting?start():stop(); })},{threshold:0.02})
+    .observe(document.querySelector('.hero'));
+})();
+
+/* ---------- the pour: sparkling tea fills the block as you scroll ---------- */
+(function(){
+  const band=document.getElementById('pourband');
+  const liq=document.getElementById('liq');
+  const cv=document.getElementById('tea');
+  if(!band||!liq||!cv) return;
+  const ctx=cv.getContext('2d');
+  const still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let W=0,H=0,DPR=1,t=0,raf=null,visible=false;
+  const bubbles=[], sparks=[], swirls=[];
+
+  function rebuild(){
+    DPR=Math.min(window.devicePixelRatio||1,2);
+    W=band.clientWidth;
+    H=band.clientHeight;
+    cv.width=Math.max(1,W*DPR);
+    cv.height=Math.max(1,H*DPR);
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+    bubbles.length=0; sparks.length=0; swirls.length=0;
+    const n=Math.round(W*0.07);
+    for(let i=0;i<n;i++){
+      bubbles.push({
+        x:Math.random()*W,
+        y:Math.random()*H,
+        r:1.1+Math.random()*3.2,
+        sp:0.35+Math.random()*0.75,
+        drift:(Math.random()-0.5)*0.45,
+        ph:Math.random()*Math.PI*2
+      });
+    }
+    for(let i=0;i<Math.round(W*0.14);i++){
+      sparks.push({
+        x:Math.random()*W,
+        y:Math.random()*H,
+        s:1.8+Math.random()*3.4,
+        ph:Math.random()*Math.PI*2,
+        sp:0.8+Math.random()*1.6,
+        gold:Math.random()>0.4
+      });
+    }
+    for(let i=0;i<9;i++){
+      swirls.push({
+        x:W*(0.08+i*0.1)+Math.random()*50,
+        y:H*(0.2+Math.random()*0.55),
+        rx:50+Math.random()*110,
+        ry:80+Math.random()*140,
+        ph:Math.random()*Math.PI*2,
+        sp:0.00045+Math.random()*0.00055
+      });
+    }
+  }
+
+  function paint(){
+    ctx.clearRect(0,0,W,H);
+    // layered tea body — not one flat colour
+    const base=ctx.createLinearGradient(0,0,0,H);
+    base.addColorStop(0,'#8FD6A8');
+    base.addColorStop(0.18,'#4FB87E');
+    base.addColorStop(0.48,'#2E8B62');
+    base.addColorStop(0.78,'#0C4A34');
+    base.addColorStop(1,'#062219');
+    ctx.fillStyle=base;
+    ctx.fillRect(0,0,W,H);
+
+    // soft depth bands that drift
+    for(let i=0;i<5;i++){
+      const y=H*(0.12+i*0.16)+Math.sin(t*0.00055+i*1.3)*18;
+      const bandG=ctx.createLinearGradient(0,y-30,0,y+40);
+      bandG.addColorStop(0,'rgba(200,245,215,0)');
+      bandG.addColorStop(0.5,'rgba(210,250,220,'+(0.07+i*0.015)+')');
+      bandG.addColorStop(1,'rgba(200,245,215,0)');
+      ctx.fillStyle=bandG;
+      ctx.fillRect(0,y-30,W,70);
+    }
+
+    // moving caustic swirls — light through liquid
+    swirls.forEach((s,i)=>{
+      const cx=s.x+Math.sin(t*s.sp+s.ph)*28;
+      const cy=s.y+Math.cos(t*s.sp*0.85+s.ph)*16;
+      const g=ctx.createRadialGradient(cx,cy,0,cx,cy,s.rx);
+      const a=0.10+0.08*Math.sin(t*0.0011+s.ph);
+      g.addColorStop(0,i%2?('rgba(255,236,180,'+a+')'):('rgba(230,255,240,'+a+')'));
+      g.addColorStop(0.55,'rgba(140,210,170,'+(a*0.35)+')');
+      g.addColorStop(1,'rgba(46,139,98,0)');
+      ctx.beginPath();
+      ctx.ellipse(cx,cy,s.rx,s.ry,Math.sin(t*0.0003+s.ph)*0.35,0,Math.PI*2);
+      ctx.fillStyle=g;
+      ctx.fill();
+    });
+
+    // rising bubbles
+    bubbles.forEach(b=>{
+      if(!still){
+        b.y-=b.sp;
+        b.x+=Math.sin(t*0.001+b.ph)*b.drift;
+        if(b.y<-6){ b.y=H+6; b.x=Math.random()*W; }
+      }
+      ctx.beginPath();
+      ctx.arc(b.x,b.y,b.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(246,255,244,'+(0.25+b.r*0.12)+')';
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(b.x-b.r*0.3,b.y-b.r*0.3,b.r*0.35,0,Math.PI*2);
+      ctx.fillStyle='rgba(255,255,255,.45)';
+      ctx.fill();
+    });
+
+    // sparkling flecks
+    sparks.forEach(s=>{
+      const tw=0.25+0.75*Math.abs(Math.sin((still?s.ph*3:t*0.0022*s.sp)+s.ph));
+      if(tw<0.28) return;
+      const half=s.s;
+      ctx.save();
+      ctx.translate(s.x+Math.sin((still?0:t)*0.0004+s.ph)*6, s.y+Math.cos((still?0:t)*0.00035+s.ph)*4);
+      ctx.rotate(Math.PI/4);
+      ctx.globalAlpha=tw*(s.gold?0.95:0.8);
+      ctx.fillStyle=s.gold?'#F0D48A':'#F6FFF4';
+      ctx.fillRect(-half/2,-half/2,half,half);
+      ctx.restore();
+    });
+
+    // surface shimmer near the top of the filled block
+    const topG=ctx.createLinearGradient(0,0,0,36);
+    topG.addColorStop(0,'rgba(246,255,244,.35)');
+    topG.addColorStop(1,'rgba(246,255,244,0)');
+    ctx.fillStyle=topG;
+    ctx.fillRect(0,0,W,36);
+  }
+
+  function frame(now){
+    t=now||0;
+    paint();
+    if(!still&&visible) raf=requestAnimationFrame(frame);
+    else raf=null;
+  }
+  function start(){
+    visible=true;
+    if(!raf&&!still) raf=requestAnimationFrame(frame);
+    else if(still) paint();
+  }
+  function stop(){
+    visible=false;
+    if(raf){ cancelAnimationFrame(raf); raf=null; }
+  }
+
+  function setFill(){
+    const r=band.getBoundingClientRect();
+    const total=r.height+window.innerHeight;
+    const seen=Math.min(Math.max(window.innerHeight-r.top,0),total);
+    const p=Math.min(Math.max(seen/total,0),1);
+    const top=Math.max(0,(1-p)*100);
+    liq.style.clipPath='inset('+top+'% 0 0 0)';
+    liq.classList.toggle('filling',p>0.02&&p<0.995);
+    const men=liq.querySelector('.meniscus');
+    if(men) men.style.top=top+'%';
+  }
+
+  rebuild();
+  paint();
+  setFill();
+  window.addEventListener('scroll',setFill,{passive:true});
+  window.addEventListener('resize',()=>{rebuild(); paint(); setFill();});
+  new IntersectionObserver(es=>es.forEach(e=>{ e.isIntersecting?start():stop(); }),{threshold:0.02})
+    .observe(band);
+  // if already on screen (hash jump / refresh mid-page)
+  const r0=band.getBoundingClientRect();
+  if(r0.bottom>0&&r0.top<window.innerHeight) start();
+})();
+
+/* ---------- the powder: matcha resting on the ground, stirred by a breeze ---------- */
+(function(){
+  const band=document.getElementById('powderband');
+  const cv=document.getElementById('dust');
+  if(!band||!cv) return;
+  const ctx=cv.getContext('2d');
+  const still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let W=0,H=0,DPR=1,t=0,last=0,raf=null,visible=false;
+  let gustX=-300;
+  const grains=[], ripples=[];
+  const pointer={x:-9999,y:-9999,on:false};
+  const shades=['rgba(198,226,152,','rgba(162,208,122,','rgba(120,182,96,','rgba(86,150,74,','rgba(58,116,60,'];
+  const GUST_SPEED=0.38, GUST_R=200;
+
+  function build(){
+    DPR=Math.min(window.devicePixelRatio||1,2);
+    W=band.clientWidth; H=band.clientHeight;
+    cv.width=Math.max(1,W*DPR); cv.height=Math.max(1,H*DPR);
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+
+    ripples.length=0;
+    for(let i=0;i<5;i++){
+      ripples.push({
+        y:H*((i+0.5)/5),
+        amp:6+Math.random()*9,
+        freq:0.0035+Math.random()*0.0035,
+        ph:Math.random()*Math.PI*2,
+        sp:0.00003+Math.random()*0.00004
+      });
+    }
+
+    grains.length=0;
+    const n=Math.min(2800,Math.round(W*2.3));
+    for(let i=0;i<n;i++){
+      grains.push({
+        x:Math.random()*W,
+        y:Math.random()*H,
+        r:0.15+Math.random()*0.5,
+        ph:Math.random()*Math.PI*2,
+        sp:0.4+Math.random()*0.8,
+        col:shades[Math.floor(Math.random()*shades.length)],
+        creep:0
+      });
+    }
+    gustX=-300;
+  }
+
+  function paint(dt){
+    ctx.clearRect(0,0,W,H);
+    const bg=ctx.createLinearGradient(0,0,0,H);
+    bg.addColorStop(0,'#0d2116');
+    bg.addColorStop(0.5,'#193f28');
+    bg.addColorStop(1,'#0b2418');
+    ctx.fillStyle=bg; ctx.fillRect(0,0,W,H);
+
+    // faint ridge marks in the powder, drifting the way sand ripples do
+    ripples.forEach(r=>{
+      ctx.beginPath();
+      for(let x=0;x<=W;x+=10){
+        const y=r.y+Math.sin(x*r.freq+t*r.sp+r.ph)*r.amp;
+        x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+      }
+      ctx.strokeStyle='rgba(210,238,190,.05)';
+      ctx.lineWidth=1.4;
+      ctx.stroke();
+    });
+
+    if(!still) gustX+=GUST_SPEED*dt;
+    if(gustX>W+300) gustX=-300;
+
+    // the grains — sitting still, until the breeze finds them
+    grains.forEach(g=>{
+      let gustAmt=0;
+      const dist=Math.abs(g.x-gustX);
+      if(dist<GUST_R) gustAmt=1-dist/GUST_R;
+      if(pointer.on){
+        const pd=Math.hypot(g.x-pointer.x,g.y-pointer.y);
+        if(pd<130) gustAmt=Math.max(gustAmt,(1-pd/130)*1.3);
+      }
+
+      if(!still) g.creep+=(0.0004+gustAmt*0.16)*dt;
+
+      const wf=0.0009+gustAmt*0.012;
+      const dispX=(still?0:Math.sin(t*wf*g.sp+g.ph)*(0.8+gustAmt*9));
+      const dispY=(still?0:Math.cos(t*wf*0.85*g.sp+g.ph)*(0.5+gustAmt*4.5));
+      let x=g.x+g.creep+dispX;
+      x=((x%W)+W)%W;
+      const y=g.y+dispY;
+
+      const alpha=0.3+gustAmt*0.55;
+      ctx.beginPath();
+      ctx.arc(x,y,g.r+gustAmt*0.35,0,Math.PI*2);
+      ctx.fillStyle=g.col+alpha+')';
+      ctx.fill();
+    });
+
+    // soft light raking low across the ground
+    const gl=ctx.createRadialGradient(W*0.28,H*0.2,10,W*0.28,H*0.2,W*0.65);
+    gl.addColorStop(0,'rgba(255,247,214,.08)');
+    gl.addColorStop(1,'rgba(255,247,214,0)');
+    ctx.fillStyle=gl; ctx.fillRect(0,0,W,H);
+  }
+
+  function frame(now){
+    const dt=last?Math.min(48,now-last):16; last=now; t=now||0;
+    paint(dt);
+    if(!still&&visible) raf=requestAnimationFrame(frame);
+    else raf=null;
+  }
+  function start(){ visible=true; last=0; if(!raf&&!still) raf=requestAnimationFrame(frame); else if(still) paint(16); }
+  function stop(){ visible=false; if(raf){cancelAnimationFrame(raf); raf=null;} }
+
+  const hint=document.getElementById('dusthint');
+  band.addEventListener('pointermove',e=>{
+    const r=cv.getBoundingClientRect();
+    pointer.x=e.clientX-r.left; pointer.y=e.clientY-r.top; pointer.on=true;
+    if(hint) hint.classList.add('gone');
+  });
+  band.addEventListener('pointerleave',()=>{pointer.on=false;});
+
+  build();
+  paint(16);
+  let rt=null;
+  window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{build();paint(16);},180)});
+  new IntersectionObserver(es=>es.forEach(e=>{ e.isIntersecting?start():stop(); }),{threshold:0.02}).observe(band);
+  const r0d=band.getBoundingClientRect();
+  if(r0d.bottom>0&&r0d.top<window.innerHeight) start();
+})();
+
+/* ---------- whisked matcha swirl ---------- */
+(function(){
+  const cv=document.getElementById('swirl');
+  if(!cv) return;
+  const ctx=cv.getContext('2d'), S=320, R=S/2;
+  const still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let a=0, raf=null;
+  const specks=[];
+  for(let i=0;i<130;i++){
+    specks.push({r:8+Math.random()*(R-16), th:Math.random()*Math.PI*2,
+      sp:0.0016+Math.random()*0.0042, sz:0.5+Math.random()*1.8, o:0.08+Math.random()*0.3});
+  }
+  function frame(){
+    ctx.clearRect(0,0,S,S);
+    const base=ctx.createRadialGradient(R-30,R-40,10,R,R,R);
+    base.addColorStop(0,'#3f9c6e'); base.addColorStop(0.5,'#1E7A56');
+    base.addColorStop(0.85,'#0C4A34'); base.addColorStop(1,'#06251a');
+    ctx.beginPath(); ctx.arc(R,R,R,0,Math.PI*2); ctx.fillStyle=base; ctx.fill();
+    ctx.save(); ctx.beginPath(); ctx.arc(R,R,R-1,0,Math.PI*2); ctx.clip();
+    // crema swirls
+    for(let i=0;i<5;i++){
+      const rr=R*(0.22+i*0.15), off=a*(1+i*0.32);
+      ctx.beginPath();
+      for(let k=0;k<=90;k++){
+        const th=(k/90)*Math.PI*2;
+        const wob=Math.sin(th*3+off*2.4+i)*R*0.045+Math.sin(th*5-off*1.6)*R*0.022;
+        const x=R+Math.cos(th+off)*(rr+wob), y=R+Math.sin(th+off)*(rr+wob)*0.94;
+        k?ctx.lineTo(x,y):ctx.moveTo(x,y);
+      }
+      ctx.closePath();
+      ctx.strokeStyle='rgba(196,232,206,'+(0.06+i*0.028)+')';
+      ctx.lineWidth=2.4-i*0.28; ctx.stroke();
+    }
+    // fine powder specks turning
+    specks.forEach(s=>{
+      s.th+=s.sp;
+      const x=R+Math.cos(s.th)*s.r, y=R+Math.sin(s.th)*s.r*0.94;
+      ctx.beginPath(); ctx.arc(x,y,s.sz,0,Math.PI*2);
+      ctx.fillStyle='rgba(226,244,224,'+s.o+')'; ctx.fill();
+    });
+    // light on the surface
+    const gl=ctx.createRadialGradient(R-58,R-72,4,R-58,R-72,R*1.05);
+    gl.addColorStop(0,'rgba(255,247,214,.28)'); gl.addColorStop(1,'rgba(255,247,214,0)');
+    ctx.fillStyle=gl; ctx.fillRect(0,0,S,S);
+    ctx.restore();
+    a+=0.0042;
+    raf=requestAnimationFrame(frame);
+  }
+  if(still){ frame(); cancelAnimationFrame(raf); }
+  else new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){ if(!raf) raf=requestAnimationFrame(frame); }
+    else if(raf){ cancelAnimationFrame(raf); raf=null; }
+  }),{threshold:.05}).observe(cv);
+})();
+
+/* ---------- the sip timeline ---------- */
+(function(){
+  const rail=document.getElementById('siprail');
+  if(!rail) return;
+  new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){ rail.classList.add('go'); }
+  }),{threshold:.35}).observe(rail);
+})();
+
+function dew(el,count){
+  const layer=el && el.querySelector('.dew');
+  if(!layer) return;
+  for(let i=0;i<count;i++){
+    const d=document.createElement('span');
+    d.className='drop';
+    d.style.left=(8+Math.random()*84)+'%';
+    d.style.height=(5+Math.random()*14)+'px';
+    d.style.animationDuration=(6+Math.random()*8)+'s';
+    d.style.animationDelay=(Math.random()*9)+'s';
+    layer.appendChild(d);
+  }
+}
+dew(document.getElementById('t1'),10);
+dew(document.getElementById('t2'),14);
+dew(document.getElementById('cc'),16);
+dew(document.getElementById('dc'),14);
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+document.getElementById('wl').addEventListener('submit',e=>{
+  e.preventDefault();
+  // Placeholder — queue position must come from the backend before launch
+  document.getElementById('num').textContent=(1200+Math.floor(Math.random()*400)).toLocaleString();
+  document.getElementById('wl').style.display='none';
+  document.getElementById('note').style.display='none';
+  document.getElementById('done').classList.add('on');
+});
+const shareUrl=(location.origin&&location.origin!=='null'&&location.protocol!=='file:')
+  ? location.origin+'/?r=you' : 'https://hemptcha.com/?r=you'; // placeholder domain until live
+document.getElementById('copy').addEventListener('click',e=>{
+  navigator.clipboard&&navigator.clipboard.writeText(shareUrl);
+  e.target.textContent='Copied';
+});
+document.getElementById('wa').addEventListener('click',()=>{
+  window.open('https://wa.me/?text='+encodeURIComponent('Join me in the queue for HempTcha — Field Day and Green Hour. '+shareUrl),'_blank','noopener');
+});
+
+/* ---------- nav ---------- */
+(function(){
+  const nav=document.getElementById('nav');
+  const onScroll=()=>nav.classList.toggle('scrolled',window.scrollY>10);
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  const burger=document.getElementById('burger'), mnav=document.getElementById('mnav');
+  burger.addEventListener('click',()=>{
+    const open=mnav.classList.toggle('open');
+    burger.setAttribute('aria-expanded',open);
+  });
+  mnav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    mnav.classList.remove('open'); burger.setAttribute('aria-expanded','false');
+  }));
+})();
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
