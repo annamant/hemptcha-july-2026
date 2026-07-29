@@ -291,17 +291,19 @@ footer{border-top:1px solid var(--hair);padding:46px 0 66px}
 .pour .say h2{font-size:clamp(2.4rem,8vw,5.4rem);color:#fff}
 .pour .say p{margin-top:18px;font-size:13px;letter-spacing:.26em;text-transform:uppercase;color:#fff;opacity:.7}
 
-/* ---------- the powder: matcha resting on the ground, stirred by a breeze ---------- */
-.powder{position:relative;height:72vh;min-height:460px;overflow:hidden;background:#4a9c3a;
-  display:flex;align-items:center;justify-content:center;text-align:center}
-.powder canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
-.powder .say{position:relative;z-index:3;mix-blend-mode:difference;pointer-events:none}
-.powder .say h2{font-size:clamp(2.3rem,7.4vw,4.8rem);color:#fff}
-.powder .say p{margin-top:16px;font-size:12.5px;letter-spacing:.26em;text-transform:uppercase;color:#fff;opacity:.7}
+/* ---------- the powder: cream ground — green matcha nebula ---------- */
+.powder{position:relative;height:72vh;min-height:460px;overflow:hidden;background:#f4f0e6;
+  display:flex;align-items:center;justify-content:center;text-align:center;cursor:crosshair}
+.powder canvas{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
+.powder .say{position:relative;z-index:3;pointer-events:none}
+.powder .say h2{font-size:clamp(2.3rem,7.4vw,4.8rem);color:#1d2e23}
+.powder .say p{margin-top:16px;font-size:12.5px;letter-spacing:.26em;text-transform:uppercase;color:#1d2e23;opacity:.55}
 .dust-hint{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:3;
-  font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);opacity:.5;
-  pointer-events:none;transition:opacity .6s ease}
-.dust-hint.gone{opacity:0}
+  font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:#4B6F44;opacity:.72;
+  pointer-events:none;transition:opacity .8s ease;
+  animation:hint-pulse 2.8s ease-in-out infinite}
+.dust-hint.gone{opacity:0;animation:none}
+@keyframes hint-pulse{0%,100%{opacity:.45}50%{opacity:.9}}
 @media(max-width:900px){.dust-hint{display:none}}
 
 /* ---------- the two worlds ---------- */
@@ -519,7 +521,7 @@ footer{border-top:1px solid var(--hair);padding:46px 0 66px}
 
 <section class="powder" id="powderband">
   <canvas id="dust" aria-hidden="true"></canvas>
-  <div class="dust-hint" id="dusthint">Hover to stir the air</div>
+  <div class="dust-hint" id="dusthint">Move your cursor — play with the powder</div>
   <div class="say">
     <h2>Fine. Green. Luxurious.</h2>
     <p>Stone-ground, matcha style — never quite still.</p>
@@ -1096,132 +1098,187 @@ footer{border-top:1px solid var(--hair);padding:46px 0 66px}
   if(r0.bottom>0&&r0.top<window.innerHeight) start();
 })();
 
-/* ---------- the powder: matcha resting on the ground, stirred by a breeze ---------- */
+/* ---------- the powder: cream ground — green matcha nebula ---------- */
 (function(){
   const band=document.getElementById('powderband');
   const cv=document.getElementById('dust');
   if(!band||!cv) return;
   const ctx=cv.getContext('2d');
-  const still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let W=0,H=0,DPR=1,t=0,last=0,raf=null,visible=false;
-  let gustX=-300;
-  const grains=[], ripples=[];
-  const pointer={x:-9999,y:-9999,on:false};
-  // vivid matcha powder greens — bright, leafy, not muted forest
-  const shades=['rgba(232,248,130,','rgba(206,236,78,','rgba(170,214,52,','rgba(140,196,44,','rgba(118,176,38,'];
-  const GUST_SPEED=0.38, GUST_R=200;
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let W=0,H=0,DPR=1,raf=null,visible=false,last=0,t=0,touched=false,ambientAt=0;
+  let sand=null;
+  const particles=[];
+  const ptr={x:-9999,y:-9999,px:-9999,py:-9999,vx:0,vy:0};
+  const hint=document.getElementById('dusthint');
 
-  function build(){
+  const COLS=[
+    [74,118,52],
+    [98,148,68],
+    [122,176,82],
+    [148,196,98],
+    [170,210,120]
+  ];
+
+  function makeSand(){
+    const c=document.createElement('canvas');
+    c.width=Math.max(1,W*DPR); c.height=Math.max(1,H*DPR);
+    const x=c.getContext('2d');
+    x.setTransform(DPR,0,0,DPR,0,0);
+    const g=x.createLinearGradient(0,0,0,H);
+    g.addColorStop(0,'#f7f3ea');
+    g.addColorStop(0.55,'#f1ebe0');
+    g.addColorStop(1,'#ebe4d6');
+    x.fillStyle=g; x.fillRect(0,0,W,H);
+    const n=Math.min(4000, Math.round(W*H*0.006));
+    for(let i=0;i<n;i++){
+      const px=Math.random()*W, py=Math.random()*H;
+      x.fillStyle='rgba(60,70,50,'+(0.02+Math.random()*0.04)+')';
+      x.fillRect(px,py,0.6+Math.random()*0.8,0.6+Math.random()*0.8);
+    }
+    return c;
+  }
+
+  function resize(){
     DPR=Math.min(window.devicePixelRatio||1,2);
     W=band.clientWidth; H=band.clientHeight;
     cv.width=Math.max(1,W*DPR); cv.height=Math.max(1,H*DPR);
     ctx.setTransform(DPR,0,0,DPR,0,0);
-
-    ripples.length=0;
-    for(let i=0;i<5;i++){
-      ripples.push({
-        y:H*((i+0.5)/5),
-        amp:6+Math.random()*9,
-        freq:0.0035+Math.random()*0.0035,
-        ph:Math.random()*Math.PI*2,
-        sp:0.00003+Math.random()*0.00004
-      });
-    }
-
-    grains.length=0;
-    const n=Math.min(3200,Math.round(W*2.6));
-    for(let i=0;i<n;i++){
-      grains.push({
-        x:Math.random()*W,
-        y:Math.random()*H,
-        r:0.9+Math.random()*1.6,
-        ph:Math.random()*Math.PI*2,
-        sp:0.4+Math.random()*0.8,
-        col:shades[Math.floor(Math.random()*shades.length)],
-        creep:0
-      });
-    }
-    gustX=-300;
+    sand=makeSand();
+    particles.length=0;
+    // seed a visible ambient cloud so the section isn't empty
+    seedAmbient(1);
+    paint();
   }
 
-  function paint(dt){
-    ctx.clearRect(0,0,W,H);
-    const bg=ctx.createLinearGradient(0,0,0,H);
-    bg.addColorStop(0,'#3a7a2e');
-    bg.addColorStop(0.45,'#5aad3c');
-    bg.addColorStop(1,'#3f8a32');
-    ctx.fillStyle=bg; ctx.fillRect(0,0,W,H);
+  function spawnAt(ox, oy, n, strength, lift){
+    const max=3600;
+    for(let i=0;i<n;i++){
+      if(particles.length>=max) break;
+      const ang=Math.random()*Math.PI*2;
+      const dist=Math.random()*(lift?48:70);
+      const col=COLS[(Math.random()*COLS.length)|0];
+      particles.push({
+        x: ox + Math.cos(ang)*dist,
+        y: oy + Math.sin(ang)*dist*(lift?0.55:0.85),
+        vx: (lift?ptr.vx*0.05:0) + (Math.random()-0.5)*0.45*strength,
+        vy: (lift?ptr.vy*0.03:0) - (0.18+Math.random()*0.4)*strength*(lift?1:0.35),
+        life:0,
+        span:2200+Math.random()*3200,
+        r:0.7+Math.random()*2.2,
+        col,
+        seed:Math.random()*1000
+      });
+    }
+  }
 
-    // faint ridge marks in the powder bed
-    ripples.forEach(r=>{
-      ctx.beginPath();
-      for(let x=0;x<=W;x+=10){
-        const y=r.y+Math.sin(x*r.freq+t*r.sp+r.ph)*r.amp;
-        x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
-      }
-      ctx.strokeStyle='rgba(210,238,120,.08)';
-      ctx.lineWidth=1.4;
-      ctx.stroke();
-    });
+  function seedAmbient(bursts){
+    for(let b=0;b<bursts;b++){
+      const ox=W*(0.22+Math.random()*0.56);
+      const oy=H*(0.35+Math.random()*0.4);
+      spawnAt(ox, oy, 55+((Math.random()*40)|0), 0.7+Math.random()*0.5, false);
+    }
+  }
 
-    if(!still) gustX+=GUST_SPEED*dt;
-    if(gustX>W+300) gustX=-300;
+  function ambient(dt){
+    ambientAt+=dt;
+    // soft ongoing cloud so people always see something to play with
+    if(ambientAt>220){
+      ambientAt=0;
+      const ox=W*(0.15+Math.random()*0.7);
+      const oy=H*(0.28+Math.random()*0.5);
+      spawnAt(ox, oy, touched?10:22, 0.55, false);
+    }
+    // until first touch, a bigger inviting bloom near the headline
+    if(!touched && ambientAt===0 && Math.random()<0.35){
+      spawnAt(W*0.5, H*0.48, 40, 0.85, false);
+    }
+  }
 
-    // grains travel horizontally only — a blow across the bed
-    grains.forEach(g=>{
-      let gustAmt=0;
-      const dist=Math.abs(g.x-gustX);
-      if(dist<GUST_R) gustAmt=1-dist/GUST_R;
-      if(pointer.on){
-        const pd=Math.hypot(g.x-pointer.x,g.y-pointer.y);
-        if(pd<130) gustAmt=Math.max(gustAmt,(1-pd/130)*1.3);
-      }
+  function lift(){
+    const speed=Math.hypot(ptr.vx, ptr.vy);
+    if(speed<0.4 || ptr.x<-9000) return;
+    // denser + bigger on touch
+    const n=Math.min(70, 18+Math.floor(speed*3.2));
+    spawnAt(ptr.x, ptr.y, n, Math.min(2.1, 0.85+speed*0.1), true);
+  }
 
-      if(!still) g.creep+=(0.0008+gustAmt*0.22)*dt;
+  function step(dt){
+    for(let i=particles.length-1;i>=0;i--){
+      const p=particles[i];
+      p.life+=dt;
+      if(p.life>=p.span){ particles.splice(i,1); continue; }
+      const swirl=Math.sin(t*0.0004+p.seed)*0.014;
+      p.vx+=swirl + (Math.random()-0.5)*0.004;
+      p.vy+=-0.01;
+      p.vx*=0.986; p.vy*=0.989;
+      p.x+=p.vx*(dt/16);
+      p.y+=p.vy*(dt/16);
+    }
+  }
 
-      const wf=0.0009+gustAmt*0.012;
-      const dispX=(still?0:Math.sin(t*wf*g.sp+g.ph)*(1.2+gustAmt*14));
-      let x=g.x+g.creep+dispX;
-      x=((x%W)+W)%W;
-      const y=g.y; // locked to the bed — no vertical travel
+  function paint(){
+    ctx.setTransform(1,0,0,1,0,0);
+    ctx.clearRect(0,0,cv.width,cv.height);
+    if(sand) ctx.drawImage(sand,0,0);
+    ctx.setTransform(DPR,0,0,DPR,0,0);
 
-      const alpha=0.45+gustAmt*0.5;
-      ctx.beginPath();
-      ctx.arc(x,y,g.r+gustAmt*0.5,0,Math.PI*2);
-      ctx.fillStyle=g.col+alpha+')';
-      ctx.fill();
-    });
+    for(let i=0;i<particles.length;i++){
+      const p=particles[i];
+      const k=p.life/p.span;
+      const alpha = k<0.1 ? (k/0.1)*0.7 : 0.7*Math.pow(1-(k-0.1)/0.9, 1.35);
+      const bloom=p.r*(1.4+k*2.6);
+      const [r,g,b]=p.col;
 
-    const gl=ctx.createRadialGradient(W*0.28,H*0.2,10,W*0.28,H*0.2,W*0.65);
-    gl.addColorStop(0,'rgba(255,247,214,.07)');
-    gl.addColorStop(1,'rgba(255,247,214,0)');
-    ctx.fillStyle=gl; ctx.fillRect(0,0,W,H);
+      const grd=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,bloom*2.8);
+      grd.addColorStop(0,'rgba('+r+','+g+','+b+','+(alpha*0.95).toFixed(3)+')');
+      grd.addColorStop(0.4,'rgba('+r+','+g+','+b+','+(alpha*0.38).toFixed(3)+')');
+      grd.addColorStop(1,'rgba('+r+','+g+','+b+',0)');
+      ctx.fillStyle=grd;
+      ctx.beginPath(); ctx.arc(p.x,p.y,bloom*2.8,0,Math.PI*2); ctx.fill();
+    }
   }
 
   function frame(now){
-    const dt=last?Math.min(48,now-last):16; last=now; t=now||0;
-    paint(dt);
-    if(!still&&visible) raf=requestAnimationFrame(frame);
+    const dt=Math.min((now-last)||16,34); last=now; t+=dt;
+    ptr.vx*=0.86; ptr.vy*=0.86;
+    if(!reduced) ambient(dt);
+    lift(); step(dt); paint();
+    if(visible&&!reduced) raf=requestAnimationFrame(frame);
     else raf=null;
   }
-  function start(){ visible=true; last=0; if(!raf&&!still) raf=requestAnimationFrame(frame); else if(still) paint(16); }
-  function stop(){ visible=false; if(raf){cancelAnimationFrame(raf); raf=null;} }
 
-  const hint=document.getElementById('dusthint');
-  band.addEventListener('pointermove',e=>{
+  function start(){
+    visible=true;
+    if(reduced){ paint(); return; }
+    if(!raf){ last=0; raf=requestAnimationFrame(frame); }
+  }
+  function stop(){
+    visible=false;
+    if(raf){ cancelAnimationFrame(raf); raf=null; }
+  }
+
+  function onMove(e){
     const r=cv.getBoundingClientRect();
-    pointer.x=e.clientX-r.left; pointer.y=e.clientY-r.top; pointer.on=true;
-    if(hint) hint.classList.add('gone');
-  });
-  band.addEventListener('pointerleave',()=>{pointer.on=false;});
+    const x=e.clientX-r.left, y=e.clientY-r.top;
+    if(ptr.px>-9000){ ptr.vx=x-ptr.px; ptr.vy=y-ptr.py; }
+    ptr.px=ptr.x=x; ptr.py=ptr.y=y;
+    if(!touched){
+      touched=true;
+      if(hint) hint.classList.add('gone');
+    }
+  }
 
-  build();
-  paint(16);
+  band.addEventListener('pointermove', onMove, {passive:true});
+  band.addEventListener('pointerleave', ()=>{
+    ptr.x=ptr.y=ptr.px=ptr.py=-9999; ptr.vx=ptr.vy=0;
+  });
+
+  resize();
   let rt=null;
-  window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{build();paint(16);},180)});
+  window.addEventListener('resize', ()=>{ clearTimeout(rt); rt=setTimeout(resize,180); });
   new IntersectionObserver(es=>es.forEach(e=>{ e.isIntersecting?start():stop(); }),{threshold:0.02}).observe(band);
-  const r0d=band.getBoundingClientRect();
-  if(r0d.bottom>0&&r0d.top<window.innerHeight) start();
+  const r0=band.getBoundingClientRect();
+  if(r0.bottom>0&&r0.top<window.innerHeight) start();
 })();
 
 /* ---------- whisked matcha swirl ---------- */
