@@ -472,7 +472,7 @@ footer{border-top:1px solid var(--hair);padding:46px 0 66px}
   <svg class="off-x" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z"/><line x1="16" y1="9" x2="21" y2="14"/><line x1="21" y1="9" x2="16" y2="14"/></svg>
   <svg class="waves" viewBox="0 0 24 24" style="position:absolute"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5c1.5 1.9 1.5 5.1 0 7"/><path d="M19 6c2.6 2.9 2.6 9.1 0 12"/></svg>
 </button>
-<div class="sound-hint" id="soundHint">Sound on — try it</div>
+<div class="sound-hint" id="soundHint"></div>
 
 <nav id="nav" aria-label="Main">
   <div class="wrap nav-in">
@@ -904,81 +904,13 @@ const Vel = (function(){
 })();
 
 const Sound = (function(){
-  let ctx=null, master=null, enabled=false, unlocked=false;
-  let pourGain=null, pourFilt=null;
-  let dustGain=null, dustFilt=null;
-
-  // Soft brown noise — round, close, like air over the lip of a glass
-  function brownBuffer(ac){
-    const n=ac.sampleRate*4, buf=ac.createBuffer(1,n,ac.sampleRate), d=buf.getChannelData(0);
-    let last=0;
-    for(let i=0;i<n;i++){
-      last = (last + (Math.random()*2-1)*0.02)*0.998;
-      d[i]=last*3.2;
-    }
-    return buf;
-  }
-
-  function soffio(srcBuf, lowpassHz, breathHz){
-    const noise=ctx.createBufferSource();
-    noise.buffer=srcBuf; noise.loop=true;
-    const hp=ctx.createBiquadFilter();
-    hp.type='highpass'; hp.frequency.value=70; hp.Q.value=0.5;
-    const lp=ctx.createBiquadFilter();
-    lp.type='lowpass'; lp.frequency.value=lowpassHz; lp.Q.value=0.35;
-    // gate controlled by scroll/cursor — silence when strength is 0
-    const gate=ctx.createGain(); gate.gain.value=0;
-    // slow breathing after the gate — soffio that never quite sits still
-    const breath=ctx.createGain(); breath.gain.value=1;
-    const lfo=ctx.createOscillator();
-    lfo.type='sine'; lfo.frequency.value=breathHz;
-    const lfoDepth=ctx.createGain(); lfoDepth.gain.value=0.14;
-    lfo.connect(lfoDepth); lfoDepth.connect(breath.gain);
-    noise.connect(hp); hp.connect(lp); lp.connect(gate); gate.connect(breath); breath.connect(master);
-    noise.start(); lfo.start();
-    return { filt:lp, gain:gate };
-  }
-
-  function build(){
-    ctx=new (window.AudioContext||window.webkitAudioContext)();
-    master=ctx.createGain(); master.gain.value=0; master.connect(ctx.destination);
-    const buf=brownBuffer(ctx);
-
-    // pour: warm soffio — slow breath under the liquid
-    const p=soffio(buf, 420, 0.16);
-    pourFilt=p.filt; pourGain=p.gain;
-
-    // dust: finer, still soft — powder stirred, not hissed
-    const d=soffio(buf, 980, 0.22);
-    dustFilt=d.filt; dustGain=d.gain;
-  }
-
-  function unlock(){
-    if(unlocked) return;
-    unlocked=true;
-    build();
-  }
-  function setEnabled(on){
-    enabled=on;
-    if(on && !ctx) unlock();
-    if(ctx && ctx.state==='suspended') ctx.resume();
-    // quiet overall — soffio should sit under the page, not announce itself
-    if(master) master.gain.setTargetAtTime(on?0.22:0, ctx.currentTime, 0.55);
-  }
-  // strength 0..1 — slow ramps so the breath arrives and leaves gently
-  function pour(strength){
-    if(!enabled||!pourGain) return;
-    const s=Math.max(0,Math.min(1,strength));
-    pourGain.gain.setTargetAtTime(s*0.28, ctx.currentTime, 0.55);
-    pourFilt.frequency.setTargetAtTime(280+s*220, ctx.currentTime, 0.7);
-  }
-  function dust(strength){
-    if(!enabled||!dustGain) return;
-    const s=Math.max(0,Math.min(1,strength));
-    dustGain.gain.setTargetAtTime(s*0.18, ctx.currentTime, 0.45);
-    dustFilt.frequency.setTargetAtTime(720+s*360, ctx.currentTime, 0.6);
-  }
+  // Audio muted for now — toggle UI stays; pour/dust are no-ops.
+  let enabled=false;
+  function setEnabled(on){ enabled=!!on; }
+  function pour(){}
+  function dust(){}
   function isEnabled(){ return enabled; }
+  function unlock(){}
   return { setEnabled, pour, dust, isEnabled, unlock };
 })();
 
@@ -1345,7 +1277,8 @@ const Sound = (function(){
     t=now||0;
     paint();
     // sound follows how much of the section is actively filling + scroll speed
-    Sound.pour(Math.min(1, Vel.abs()*90 + 0.12));
+    // only a soft breath while scrolling — no constant bed (that read as a running tap)
+    Sound.pour(Math.min(1, Vel.abs()*35));
     if(!still&&visible) raf=requestAnimationFrame(frame);
     else raf=null;
   }
@@ -1484,7 +1417,7 @@ const Sound = (function(){
     if(speed<0.4 || ptr.x<-9000) return;
     const n=Math.min(70, 18+Math.floor(speed*3.2));
     spawnAt(ptr.x, ptr.y, n, Math.min(2.1, 0.85+speed*0.1), true);
-    Sound.dust(Math.min(1, speed*0.06));
+    Sound.dust(Math.min(1, speed*0.035));
   }
 
   function step(dt){
@@ -1668,7 +1601,7 @@ const Sound = (function(){
 
   function press(){
     holding=true; dial.classList.add('holding'); loopStart();
-    Sound.pour(0.5); // reuse the liquid sound bed for the sip too
+    Sound.pour(0.35); // soft breath while holding the sip
   }
   function release(){
     holding=false; dial.classList.remove('holding'); loopStart();
