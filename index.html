@@ -905,32 +905,52 @@ const Vel = (function(){
 
 const Sound = (function(){
   let ctx=null, master=null, enabled=false, unlocked=false;
-  let pourGain=null, pourFilt=null, pourNoise=null;
-  let dustGain=null, dustFilt=null, dustNoise=null;
+  let pourGain=null, pourFilt=null;
+  let dustGain=null, dustFilt=null;
 
-  function noiseBuffer(ac){
-    const n=ac.sampleRate*2, buf=ac.createBuffer(1,n,ac.sampleRate), d=buf.getChannelData(0);
-    for(let i=0;i<n;i++) d[i]=Math.random()*2-1;
+  // Soft brown noise — round, close, like air over the lip of a glass
+  function brownBuffer(ac){
+    const n=ac.sampleRate*4, buf=ac.createBuffer(1,n,ac.sampleRate), d=buf.getChannelData(0);
+    let last=0;
+    for(let i=0;i<n;i++){
+      last = (last + (Math.random()*2-1)*0.02)*0.998;
+      d[i]=last*3.2;
+    }
     return buf;
+  }
+
+  function soffio(srcBuf, lowpassHz, breathHz){
+    const noise=ctx.createBufferSource();
+    noise.buffer=srcBuf; noise.loop=true;
+    const hp=ctx.createBiquadFilter();
+    hp.type='highpass'; hp.frequency.value=70; hp.Q.value=0.5;
+    const lp=ctx.createBiquadFilter();
+    lp.type='lowpass'; lp.frequency.value=lowpassHz; lp.Q.value=0.35;
+    // gate controlled by scroll/cursor — silence when strength is 0
+    const gate=ctx.createGain(); gate.gain.value=0;
+    // slow breathing after the gate — soffio that never quite sits still
+    const breath=ctx.createGain(); breath.gain.value=1;
+    const lfo=ctx.createOscillator();
+    lfo.type='sine'; lfo.frequency.value=breathHz;
+    const lfoDepth=ctx.createGain(); lfoDepth.gain.value=0.14;
+    lfo.connect(lfoDepth); lfoDepth.connect(breath.gain);
+    noise.connect(hp); hp.connect(lp); lp.connect(gate); gate.connect(breath); breath.connect(master);
+    noise.start(); lfo.start();
+    return { filt:lp, gain:gate };
   }
 
   function build(){
     ctx=new (window.AudioContext||window.webkitAudioContext)();
     master=ctx.createGain(); master.gain.value=0; master.connect(ctx.destination);
+    const buf=brownBuffer(ctx);
 
-    // pour: filtered noise, low liquid whoosh
-    pourNoise=ctx.createBufferSource(); pourNoise.buffer=noiseBuffer(ctx); pourNoise.loop=true;
-    pourFilt=ctx.createBiquadFilter(); pourFilt.type='bandpass'; pourFilt.frequency.value=340; pourFilt.Q.value=0.7;
-    pourGain=ctx.createGain(); pourGain.gain.value=0;
-    pourNoise.connect(pourFilt); pourFilt.connect(pourGain); pourGain.connect(master);
-    pourNoise.start();
+    // pour: warm soffio — slow breath under the liquid
+    const p=soffio(buf, 420, 0.16);
+    pourFilt=p.filt; pourGain=p.gain;
 
-    // dust: higher, granular hiss for the powder/whisk section
-    dustNoise=ctx.createBufferSource(); dustNoise.buffer=noiseBuffer(ctx); dustNoise.loop=true;
-    dustFilt=ctx.createBiquadFilter(); dustFilt.type='highpass'; dustFilt.frequency.value=1800;
-    dustGain=ctx.createGain(); dustGain.gain.value=0;
-    dustNoise.connect(dustFilt); dustFilt.connect(dustGain); dustGain.connect(master);
-    dustNoise.start();
+    // dust: finer, still soft — powder stirred, not hissed
+    const d=soffio(buf, 980, 0.22);
+    dustFilt=d.filt; dustGain=d.gain;
   }
 
   function unlock(){
@@ -942,19 +962,21 @@ const Sound = (function(){
     enabled=on;
     if(on && !ctx) unlock();
     if(ctx && ctx.state==='suspended') ctx.resume();
-    if(master) master.gain.setTargetAtTime(on?0.55:0, ctx.currentTime, 0.25);
+    // quiet overall — soffio should sit under the page, not announce itself
+    if(master) master.gain.setTargetAtTime(on?0.22:0, ctx.currentTime, 0.55);
   }
-  // strength 0..1 driven by scroll velocity / cursor speed
+  // strength 0..1 — slow ramps so the breath arrives and leaves gently
   function pour(strength){
     if(!enabled||!pourGain) return;
     const s=Math.max(0,Math.min(1,strength));
-    pourGain.gain.setTargetAtTime(s*0.9, ctx.currentTime, 0.08);
-    pourFilt.frequency.setTargetAtTime(220+s*420, ctx.currentTime, 0.15);
+    pourGain.gain.setTargetAtTime(s*0.28, ctx.currentTime, 0.55);
+    pourFilt.frequency.setTargetAtTime(280+s*220, ctx.currentTime, 0.7);
   }
   function dust(strength){
     if(!enabled||!dustGain) return;
     const s=Math.max(0,Math.min(1,strength));
-    dustGain.gain.setTargetAtTime(s*0.5, ctx.currentTime, 0.06);
+    dustGain.gain.setTargetAtTime(s*0.18, ctx.currentTime, 0.45);
+    dustFilt.frequency.setTargetAtTime(720+s*360, ctx.currentTime, 0.6);
   }
   function isEnabled(){ return enabled; }
   return { setEnabled, pour, dust, isEnabled, unlock };
