@@ -149,6 +149,10 @@ nav.scrolled{background:rgba(243,239,230,.9);-webkit-backdrop-filter:blur(12px);
     radial-gradient(115% 48% at 30% 0%,rgba(255,255,255,.26),transparent 55%)}
 .matcha .can-frame::after{content:'';position:absolute;left:15%;top:6%;bottom:8%;width:10%;z-index:1;pointer-events:none;
   border-radius:40px;background:linear-gradient(90deg,rgba(255,255,255,.55),rgba(255,255,255,.08) 70%,transparent);opacity:.75}
+/* Keep the dark-can copy crisp above the reflective finish. */
+.matcha .can-frame > *{z-index:4}
+.matcha .can-vname{color:#FFFDF5;text-shadow:0 0 8px rgba(0,0,0,.48)}
+.matcha .can-head,.matcha .can-field,.matcha .can-foot{color:#FFFDF5}
 
 .can-head{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:baseline;font-size:6.5px;letter-spacing:.28em;text-transform:uppercase;opacity:.55}
 .can-head .num{font-family:'Bodoni Moda';font-style:italic;font-size:14px;letter-spacing:0;opacity:.9}
