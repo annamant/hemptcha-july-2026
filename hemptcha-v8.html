@@ -5,15 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HempTcha™ — Field Day &amp; Green Hour</title>
 <meta name="description" content="Ten thousand years old. Never once a drink. Two hemp leaf drinks — Field Day and Green Hour. Organic, European, naturally without caffeine. London, this autumn.">
-<meta name="theme-color" content="#04120C">
-<meta property="og:type" content="website">
-<meta property="og:title" content="HempTcha™ — Field Day &amp; Green Hour">
-<meta property="og:description" content="Ten thousand years old. Never once a drink. Two hemp leaf drinks, poured in London this autumn.">
-<meta property="og:site_name" content="HempTcha">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="HempTcha™ — Field Day &amp; Green Hour">
-<meta name="twitter:description" content="Ten thousand years old. Never once a drink. Two hemp leaf drinks, poured in London this autumn.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2304120C'/%3E%3Crect x='24' y='24' width='16' height='16' transform='rotate(45 32 32)' fill='%23C6A34C'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -29,11 +20,7 @@
   --hair:rgba(246,242,231,.14);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:104px}
-::selection{background:var(--gold);color:var(--void)}
-.skip{position:absolute;left:-9999px;top:0;z-index:99;background:var(--gold);color:var(--void);
-  padding:12px 22px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none}
-.skip:focus{left:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{background:var(--void);color:var(--bone);
   font-family:'Jost',system-ui,sans-serif;font-weight:300;font-size:17px;line-height:1.65;overflow-x:hidden}
 h1,h2,h3,.ser{font-family:'Bodoni Moda',Georgia,serif;font-weight:400;line-height:1.06;letter-spacing:-0.01em}
@@ -67,23 +54,7 @@ a{color:inherit}
 nav,main,footer{position:relative;z-index:3}
 
 /* nav */
-nav{position:sticky;top:0;z-index:10;transition:background .35s ease,border-color .35s ease;
-  border-bottom:1px solid transparent}
-nav.scrolled{background:rgba(4,18,12,.86);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
-  border-bottom-color:var(--hair)}
-.nav-in{display:flex;align-items:center;justify-content:space-between;height:88px;gap:18px}
-.burger{display:inline-flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;
-  padding:0 10px;margin-left:auto;background:transparent;border:1px solid var(--hair);cursor:pointer}
-.burger span{display:block;height:1px;background:var(--bone);transition:.25s}
-.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(3px) rotate(45deg)}
-.burger[aria-expanded="true"] span:nth-child(2){transform:translateY(-3px) rotate(-45deg)}
-@media(min-width:900px){.burger{display:none}}
-.mnav{display:none;background:rgba(4,18,12,.97);border-bottom:1px solid var(--hair)}
-.mnav.open{display:block}
-.mnav a{display:block;padding:18px 0;text-decoration:none;font-size:13px;letter-spacing:.18em;
-  text-transform:uppercase;opacity:.8;border-top:1px solid var(--hair)}
-.mnav a:hover{color:var(--gold);opacity:1}
-@media(min-width:900px){.mnav{display:none!important}}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:88px}
 .mark{font-family:'Bodoni Moda';font-weight:400;font-size:23px;letter-spacing:.03em}
 .mark sup{font-size:9px;vertical-align:super;letter-spacing:0}
 .nav-links{display:none;gap:34px;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
@@ -111,54 +82,23 @@ nav.scrolled{background:rgba(4,18,12,.86);-webkit-backdrop-filter:blur(12px);bac
   opacity:.6;border-bottom:1px solid var(--hair);padding-bottom:4px}
 .btn-q:hover{opacity:1}
 
-/* cans — editorial spine, v11 */
-.stage{display:flex;justify-content:center;align-items:flex-end;gap:50px;min-height:460px}
-.can{position:relative;width:128px;height:340px;
-  transition:transform .55s cubic-bezier(.2,.8,.2,1),filter .55s ease;
-  filter:drop-shadow(0 32px 40px rgba(0,0,0,.42))}
-.stage .can.field{transform:rotate(-3deg) translateY(20px)}
-.stage .can.matcha{transform:rotate(2.5deg)}
-.stage:hover .can.field{transform:rotate(-3deg) translateY(4px)}
-.stage:hover .can.matcha{transform:rotate(2.5deg) translateY(-14px)}
-.stage:hover .can{filter:drop-shadow(0 46px 56px rgba(0,0,0,.56))}
-
-.can-frame{position:absolute;inset:0;border-radius:3px;overflow:hidden;
-  display:flex;flex-direction:column;padding:18px 14px 16px}
-.field .can-frame{background:linear-gradient(172deg,#f6edd7 0%,#ece1c5 58%,#d6c6a3 100%);color:#1d2e23}
-.matcha .can-frame{background:linear-gradient(172deg,#0c2f23 0%,#061510 100%);color:var(--bone)}
-.can-frame::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;
-  background:radial-gradient(120% 60% at 30% 0%,rgba(255,255,255,.18),transparent 60%)}
-.matcha .can-frame::before{background:radial-gradient(120% 60% at 30% 0%,rgba(255,255,255,.06),transparent 60%)}
-
-.can-head{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:baseline;font-size:6.5px;letter-spacing:.28em;text-transform:uppercase;opacity:.55}
-.can-head .num{font-family:'Bodoni Moda';font-style:italic;font-size:14px;letter-spacing:0;opacity:.9}
-
-.can-spine{position:absolute;left:42px;top:26px;bottom:24px;width:1px;background:currentColor;opacity:.26;z-index:1}
-
-.can-vname{position:absolute;left:18px;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;
-  font-family:'Bodoni Moda';font-style:italic;font-size:30px;letter-spacing:.02em;line-height:1;opacity:.94;z-index:2}
-
-.can-field{position:absolute;left:56px;right:16px;top:52px;bottom:46px;z-index:2;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-.can-leaf{width:48px;height:48px;opacity:.8;margin-bottom:16px;flex:none}
-.can-note{font-size:6.5px;letter-spacing:.24em;text-transform:uppercase;line-height:1.7;opacity:.55;max-width:13ch}
-
-.can-foot{position:absolute;left:14px;right:14px;bottom:16px;z-index:2;
-  display:flex;justify-content:space-between;align-items:baseline;font-size:6.5px;letter-spacing:.28em;text-transform:uppercase;opacity:.5}
-.can-foot .vol{font-family:'Bodoni Moda';font-style:italic;font-size:11px;letter-spacing:0;opacity:.85}
-
-.can .dew{position:absolute;inset:16px 12px 16px;z-index:3;pointer-events:none;overflow:hidden;border-radius:2px}
-.drop{position:absolute;width:2px;border-radius:2px;background:rgba(255,255,255,.28);animation:run linear infinite}
-.field .drop{background:rgba(29,46,35,.12)}
-@keyframes run{0%{transform:translateY(-10px);opacity:0}12%{opacity:1}100%{transform:translateY(300px);opacity:0}}
-
-/* section cans */
-.chill{position:relative;display:flex;justify-content:center;align-items:center;min-height:410px}
-.chillcan,.duskcan{position:relative;z-index:1;width:146px;height:386px;filter:drop-shadow(0 34px 46px rgba(0,0,0,.48))}
-.duskcan{transform:translateX(46px) rotate(2.5deg)}
-.chillcan .can-vname,.duskcan .can-vname{font-size:34px}
-.chillcan .can-leaf,.duskcan .can-leaf{width:54px;height:54px}
-@media(max-width:520px){.duskcan{transform:translateX(20px) rotate(2.5deg)}}
+/* cans */
+.stage{display:flex;justify-content:center;align-items:flex-end;gap:30px;min-height:380px}
+.tin{position:relative;width:140px;height:326px;overflow:hidden;border-radius:4px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:22px 14px;
+  box-shadow:0 40px 70px -34px rgba(0,0,0,.85)}
+.tin.a{background:linear-gradient(100deg,#0a2f21,#0C4A34 42%,#08241a);border:1px solid rgba(198,163,76,.28)}
+.tin.b{background:linear-gradient(100deg,#efe9d8,#F6F2E7 45%,#ded6c0);color:var(--deep);
+  width:118px;height:280px;border:1px solid rgba(4,18,12,.18)}
+.tin .nm{font-family:'Bodoni Moda';font-size:19px;line-height:1.1;letter-spacing:.01em}
+.tin .c2{font-size:8.5px;letter-spacing:.28em;text-transform:uppercase;opacity:.6;margin-top:12px}
+.tin .btm{position:absolute;bottom:16px;font-size:8px;letter-spacing:.24em;opacity:.5}
+.tin .gline{position:absolute;left:16px;right:16px;top:52px;height:1px;background:var(--gold-dim)}
+.tin.b .gline{background:rgba(4,18,12,.2)}
+.tin .lid{position:absolute;top:0;left:0;right:0;height:10px;background:rgba(255,255,255,.1)}
+.drop{position:absolute;width:3px;border-radius:2px;background:rgba(255,255,255,.32);animation:run linear infinite}
+.tin.b .drop{background:rgba(4,18,12,.14)}
+@keyframes run{0%{transform:translateY(-14px);opacity:0}14%{opacity:1}100%{transform:translateY(330px);opacity:0}}
 
 .spec{display:flex;flex-wrap:wrap;gap:0 52px;margin-top:74px;padding-top:24px;border-top:1px solid var(--gold-dim)}
 .spec div{padding:8px 0}
@@ -199,27 +139,7 @@ nav.scrolled{background:rgba(4,18,12,.86);-webkit-backdrop-filter:blur(12px);bac
 .serve .sub{margin-top:24px;max-width:44ch;opacity:.68}
 .vgrid{display:grid;gap:34px;margin-top:60px}
 @media(min-width:820px){.vgrid{grid-template-columns:repeat(3,1fr);gap:48px}}
-.v{border-top:1px solid var(--gold-dim);padding-top:24px;position:relative}
-.v::before{content:'';position:absolute;top:-1px;left:0;width:0;height:1px;background:var(--gold);transition:width .6s ease}
-.v:hover::before{width:100%}
-.vis{height:160px;display:flex;align-items:flex-end;margin-bottom:20px}
-.vis svg{display:block;overflow:visible}
-.vis .glassline{fill:none;stroke:rgba(246,242,231,.55);stroke-width:1.5;stroke-linecap:round}
-.vis .goldline{fill:none;stroke:var(--gold);stroke-width:1.2;stroke-linecap:round}
-.vis .liq{fill:rgba(30,122,86,.55)}
-@keyframes ice-bob{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(4px) rotate(3deg)}}
-.ice{animation:ice-bob 5.5s ease-in-out infinite;transform-origin:70px 100px}
-@keyframes peel-sway{0%,100%{transform:rotate(0deg)}50%{transform:rotate(-5deg)}}
-.peel{animation:peel-sway 7s ease-in-out infinite;transform-origin:96px 46px}
-@keyframes head-settle{0%{opacity:.9;transform:scaleY(1)}72%{opacity:.3;transform:scaleY(.45)}100%{opacity:.9;transform:scaleY(1)}}
-.head{animation:head-settle 9s ease-in-out infinite;transform-origin:70px 60px}
-@keyframes bub-rise{0%{transform:translateY(0);opacity:0}18%{opacity:.7}90%{opacity:.5}100%{transform:translateY(-26px);opacity:0}}
-.bub{animation:bub-rise 4s linear infinite}
-.bub.b2{animation-delay:1.3s}.bub.b3{animation-delay:2.6s}
-@keyframes bar-glow{0%,100%{opacity:.25}50%{opacity:.6}}
-.glow{animation:bar-glow 8s ease-in-out infinite}
-@keyframes bar-shine{0%,100%{transform:translateX(-10px)}50%{transform:translateX(10px)}}
-.shine{animation:bar-shine 9s ease-in-out infinite}
+.v{border-top:1px solid var(--gold-dim);padding-top:24px}
 .v h3{font-size:1.25rem;margin-bottom:11px}
 .v p{font-size:15px;opacity:.7}
 
@@ -271,40 +191,22 @@ nav.scrolled{background:rgba(4,18,12,.86);-webkit-backdrop-filter:blur(12px);bac
 
 footer{border-top:1px solid var(--hair);padding:46px 0 66px}
 .foot{display:flex;flex-wrap:wrap;gap:26px;justify-content:space-between}
-.legal{max-width:62ch;font-size:11.5px;opacity:.58;line-height:1.85}
-.fnav{display:flex;gap:26px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;flex-wrap:wrap;margin-top:6px}
-.fnav a{text-decoration:none;opacity:.55}
-.fnav a:hover{opacity:1;color:var(--gold)}
+.legal{max-width:62ch;font-size:11.5px;opacity:.42;line-height:1.85}
 
 /* ---------- the pour ---------- */
-.pour{position:relative;height:78vh;min-height:520px;overflow:hidden;background:var(--void);
+.pour{position:relative;height:78vh;min-height:460px;overflow:hidden;background:var(--void);
   display:flex;align-items:center;justify-content:center;text-align:center}
-.pour .liq{position:absolute;inset:0;pointer-events:none;
-  clip-path:inset(100% 0 0 0);transition:clip-path .12s linear}
-.pour .liq canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
-.pour .liq .meniscus{position:absolute;left:0;right:0;height:3px;top:0;
-  background:linear-gradient(90deg,transparent,rgba(246,255,244,.7),rgba(232,198,120,.45),rgba(246,255,244,.7),transparent);
-  box-shadow:0 0 18px rgba(200,240,210,.35);z-index:2;pointer-events:none;
-  opacity:0;transition:opacity .2s}
-.pour .liq.filling .meniscus{opacity:1}
-.pour .say{position:relative;z-index:3;mix-blend-mode:difference;pointer-events:none}
+.pour .liq{position:absolute;left:0;right:0;bottom:0;height:0%;
+  background:linear-gradient(180deg,#2E8B62 0%,#0C4A34 32%,#062219 100%);
+  transition:height .18s linear}
+.pour .liq::before{content:'';position:absolute;top:-2px;left:0;right:0;height:3px;background:rgba(246,242,231,.5)}
+.pour .liq::after{content:'';position:absolute;top:-26px;left:0;right:0;height:26px;
+  background:radial-gradient(60% 100% at 20% 100%, rgba(246,242,231,.18), transparent 70%),
+             radial-gradient(50% 100% at 62% 100%, rgba(246,242,231,.14), transparent 70%),
+             radial-gradient(45% 100% at 88% 100%, rgba(246,242,231,.10), transparent 70%)}
+.pour .say{position:relative;z-index:2;mix-blend-mode:difference}
 .pour .say h2{font-size:clamp(2.4rem,8vw,5.4rem);color:#fff}
 .pour .say p{margin-top:18px;font-size:13px;letter-spacing:.26em;text-transform:uppercase;color:#fff;opacity:.7}
-
-/* ---------- the powder: cream ground — green matcha nebula ---------- */
-.powder{position:relative;height:72vh;min-height:460px;overflow:hidden;background:#f4f0e6;
-  display:flex;align-items:center;justify-content:center;text-align:center;cursor:crosshair}
-.powder canvas{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
-.powder .say{position:relative;z-index:3;pointer-events:none}
-.powder .say h2{font-size:clamp(2.3rem,7.4vw,4.8rem);color:#1d2e23}
-.powder .say p{margin-top:16px;font-size:12.5px;letter-spacing:.26em;text-transform:uppercase;color:#1d2e23;opacity:.55}
-.dust-hint{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:3;
-  font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:#4B6F44;opacity:.72;
-  pointer-events:none;transition:opacity .8s ease;
-  animation:hint-pulse 2.8s ease-in-out infinite}
-.dust-hint.gone{opacity:0;animation:none}
-@keyframes hint-pulse{0%,100%{opacity:.45}50%{opacity:.9}}
-@media(max-width:900px){.dust-hint{display:none}}
 
 /* ---------- the two worlds ---------- */
 .world{position:relative;overflow:hidden;padding:104px 0}
@@ -328,10 +230,17 @@ footer{border-top:1px solid var(--hair);padding:46px 0 66px}
 @keyframes sweep{0%,100%{transform:translateX(-42%)}50%{transform:translateX(42%)}}
 
 /* swirl canvas on the dark world */
-.swirlbox{position:relative;display:flex;justify-content:center;align-items:center;min-height:400px}
-#swirl{position:absolute;left:50%;top:50%;transform:translate(-62%,-52%);
-  width:320px;height:320px;border-radius:50%;display:block;
+.swirlbox{position:relative;display:flex;justify-content:center;align-items:center;min-height:340px}
+#swirl{width:320px;height:320px;border-radius:50%;display:block;
   box-shadow:0 40px 80px -30px rgba(0,0,0,.9), inset 0 0 60px rgba(0,0,0,.5)}
+.chill{position:relative;display:flex;justify-content:center;align-items:center;min-height:340px}
+.chillcan{position:relative;width:150px;height:340px;border-radius:5px;overflow:hidden;
+  background:linear-gradient(100deg,#efe9d8,#F6F2E7 45%,#ddd4bd);border:1px solid rgba(4,18,12,.16);
+  box-shadow:0 40px 70px -34px rgba(0,0,0,.45);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.chillcan .nm{font-family:'Bodoni Moda';font-size:21px;color:var(--deep)}
+.chillcan .c2{font-size:8.5px;letter-spacing:.28em;text-transform:uppercase;opacity:.55;margin-top:12px;color:var(--deep)}
+.chillcan .gline{position:absolute;left:18px;right:18px;top:56px;height:1px;background:rgba(4,18,12,.2)}
 
 /* ---------- the sip ---------- */
 .sip{padding:104px 0;background:var(--deep);border-top:1px solid var(--hair);overflow:hidden}
@@ -360,10 +269,9 @@ footer{border-top:1px solid var(--hair);padding:46px 0 66px}
 </style>
 </head>
 <body>
-<a class="skip" href="#story">Skip to content</a>
 <div class="grain" aria-hidden="true"></div>
 
-<nav id="nav" aria-label="Main">
+<nav>
   <div class="wrap nav-in">
     <div class="mark">HempTcha<sup>™</sup></div>
     <div class="nav-links">
@@ -371,20 +279,7 @@ footer{border-top:1px solid var(--hair);padding:46px 0 66px}
       <a href="#drinks">The drinks</a>
       <a href="#serve">How to serve</a>
     </div>
-    <div style="display:flex;align-items:center;gap:14px">
-      <a class="nav-cta" href="#join">The queue</a>
-      <button class="burger" id="burger" aria-expanded="false" aria-controls="mnav" aria-label="Menu">
-        <span></span><span></span>
-      </button>
-    </div>
-  </div>
-  <div class="mnav" id="mnav">
-    <div class="wrap">
-      <a href="#story">The plant</a>
-      <a href="#drinks">The drinks</a>
-      <a href="#serve">How to serve</a>
-      <a href="#join">The queue</a>
-    </div>
+    <a class="nav-cta" href="#join">The queue</a>
   </div>
 </nav>
 
@@ -404,37 +299,17 @@ footer{border-top:1px solid var(--hair);padding:46px 0 66px}
       </div>
     </div>
     <div class="stage" aria-hidden="true">
-      <div class="can field" id="t1">
-        <div class="can-frame">
-          <div class="can-head"><span>HempTcha</span><span class="num">01</span></div>
-          <div class="can-spine"></div>
-          <div class="can-vname">Field Day</div>
-          <div class="can-field">
-            <svg class="can-leaf" viewBox="0 0 48 48" aria-hidden="true">
-              <path d="M24 6 C 16 16, 14 28, 24 42 C 34 28, 32 16, 24 6 Z" fill="none" stroke="currentColor" stroke-width="1.1"/>
-              <path d="M24 12 L 24 42 M 24 18 L 18 22 M 24 18 L 30 22 M 24 24 L 16 29 M 24 24 L 32 29 M 24 30 L 19 35 M 24 30 L 29 35" fill="none" stroke="currentColor" stroke-width=".9" opacity=".7"/>
-            </svg>
-            <div class="can-note">White peach · citrus · cut grass</div>
-          </div>
-          <div class="can-foot"><span>Iced hemp leaf tea</span><span class="vol">250</span></div>
-        </div>
-        <div class="dew"></div>
+      <div class="tin b" id="t1">
+        <div class="lid"></div><div class="gline"></div>
+        <div class="nm">Field Day</div>
+        <div class="c2">Hemp Leaf Tea</div>
+        <div class="btm">250ML</div>
       </div>
-      <div class="can matcha" id="t2">
-        <div class="can-frame">
-          <div class="can-head"><span>HempTcha</span><span class="num">02</span></div>
-          <div class="can-spine"></div>
-          <div class="can-vname">Green Hour</div>
-          <div class="can-field">
-            <svg class="can-leaf" viewBox="0 0 48 48" aria-hidden="true">
-              <path d="M24 6 C 16 16, 14 28, 24 42 C 34 28, 32 16, 24 6 Z" fill="none" stroke="currentColor" stroke-width="1.1"/>
-              <path d="M24 12 L 24 42 M 24 18 L 18 22 M 24 18 L 30 22 M 24 24 L 16 29 M 24 24 L 32 29 M 24 30 L 19 35 M 24 30 L 29 35" fill="none" stroke="currentColor" stroke-width=".9" opacity=".7"/>
-            </svg>
-            <div class="can-note">Stone-ground · creamy · deep green</div>
-          </div>
-          <div class="can-foot"><span>Hemp matcha</span><span class="vol">250</span></div>
-        </div>
-        <div class="dew"></div>
+      <div class="tin a" id="t2">
+        <div class="lid"></div><div class="gline"></div>
+        <div class="nm">Green Hour</div>
+        <div class="c2">Hemp Matcha</div>
+        <div class="btm">250ML</div>
       </div>
     </div>
   </div>
@@ -475,13 +350,10 @@ footer{border-top:1px solid var(--hair);padding:46px 0 66px}
 </section>
 
 <section class="pour" id="pourband">
-  <div class="liq" id="liq">
-    <div class="meniscus" aria-hidden="true"></div>
-    <canvas id="tea" aria-hidden="true"></canvas>
-  </div>
+  <div class="liq" id="liq"></div>
   <div class="say">
     <h2>Cold. Green. Poured.</h2>
-    <p>Keep scrolling. You're pouring.</p>
+    <p>Keep scrolling</p>
   </div>
 </section>
 
@@ -499,32 +371,12 @@ footer{border-top:1px solid var(--hair);padding:46px 0 66px}
       <div class="chips"><span class="chip">Sharp</span><span class="chip">Bright</span><span class="chip">Low sugar</span></div>
     </div>
     <div class="chill rv" aria-hidden="true">
-      <div class="chillcan can field" id="cc">
-        <div class="can-frame">
-          <div class="can-head"><span>HempTcha</span><span class="num">01</span></div>
-          <div class="can-spine"></div>
-          <div class="can-vname">Field Day</div>
-          <div class="can-field">
-            <svg class="can-leaf" viewBox="0 0 48 48" aria-hidden="true">
-              <path d="M24 6 C 16 16, 14 28, 24 42 C 34 28, 32 16, 24 6 Z" fill="none" stroke="currentColor" stroke-width="1.1"/>
-              <path d="M24 12 L 24 42 M 24 18 L 18 22 M 24 18 L 30 22 M 24 24 L 16 29 M 24 24 L 32 29 M 24 30 L 19 35 M 24 30 L 29 35" fill="none" stroke="currentColor" stroke-width=".9" opacity=".7"/>
-            </svg>
-            <div class="can-note">White peach · citrus · cut grass</div>
-          </div>
-          <div class="can-foot"><span>Iced hemp leaf tea</span><span class="vol">250</span></div>
-        </div>
-        <div class="dew"></div>
+      <div class="chillcan" id="cc">
+        <div class="gline"></div>
+        <div class="nm">Field Day</div>
+        <div class="c2">Hemp Leaf Tea</div>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="powder" id="powderband">
-  <canvas id="dust" aria-hidden="true"></canvas>
-  <div class="dust-hint" id="dusthint">Move your cursor — play with the powder</div>
-  <div class="say">
-    <h2>Fine. Green. Luxurious.</h2>
-    <p>Stone-ground, matcha style — never quite still.</p>
   </div>
 </section>
 
@@ -540,25 +392,7 @@ footer{border-top:1px solid var(--hair);padding:46px 0 66px}
       <div class="kick">Shake it. Ice. Sit down. It isn't going anywhere.</div>
       <div class="chips"><span class="chip">Deep</span><span class="chip">Creamy</span><span class="chip">Stone-ground</span></div>
     </div>
-    <div class="swirlbox rv" aria-hidden="true">
-      <canvas id="swirl" width="320" height="320"></canvas>
-      <div class="duskcan can matcha" id="dc">
-        <div class="can-frame">
-          <div class="can-head"><span>HempTcha</span><span class="num">02</span></div>
-          <div class="can-spine"></div>
-          <div class="can-vname">Green Hour</div>
-          <div class="can-field">
-            <svg class="can-leaf" viewBox="0 0 48 48" aria-hidden="true">
-              <path d="M24 6 C 16 16, 14 28, 24 42 C 34 28, 32 16, 24 6 Z" fill="none" stroke="currentColor" stroke-width="1.1"/>
-              <path d="M24 12 L 24 42 M 24 18 L 18 22 M 24 18 L 30 22 M 24 24 L 16 29 M 24 24 L 32 29 M 24 30 L 19 35 M 24 30 L 29 35" fill="none" stroke="currentColor" stroke-width=".9" opacity=".7"/>
-            </svg>
-            <div class="can-note">Stone-ground · creamy · deep green</div>
-          </div>
-          <div class="can-foot"><span>Hemp matcha</span><span class="vol">250</span></div>
-        </div>
-        <div class="dew"></div>
-      </div>
-    </div>
+    <div class="swirlbox rv" aria-hidden="true"><canvas id="swirl" width="320" height="320"></canvas></div>
   </div>
 </section>
 
@@ -602,58 +436,18 @@ footer{border-top:1px solid var(--hair);padding:46px 0 66px}
     <div class="rv">
       <span class="lbl">How to serve it</span>
       <h2>It deserves a glass. Give it one.</h2>
-      <p class="sub">This is not a drink for the walk between two places. Three ways we'd pour it.</p>
+      <p class="sub">This is not a drink for the walk between two places. Three ways we'd pour it, and one we'd rather you didn't.</p>
     </div>
     <div class="vgrid rv">
       <div class="v">
-        <div class="vis" aria-hidden="true">
-          <svg viewBox="0 0 140 150" width="140" height="150">
-            <path class="liq" d="M40,84 Q55,79 70,84 T100,84 L98,134 Q98,140 92,140 L48,140 Q42,140 42,134 Z"/>
-            <g class="ice">
-              <rect x="55" y="80" width="30" height="30" rx="3" transform="rotate(10 70 95)"
-                fill="rgba(246,242,231,.10)" stroke="rgba(246,242,231,.7)" stroke-width="1.2"/>
-              <path d="M61,88 L81,102" stroke="rgba(246,242,231,.25)" stroke-width="1"/>
-            </g>
-            <path class="glassline" d="M34,46 L38,136 Q38,144 47,144 L93,144 Q102,144 102,136 L106,46"/>
-            <path class="glassline" d="M34,46 Q70,52 106,46" opacity=".35"/>
-            <path class="goldline peel" d="M96,46 q10,-12 4,-20 q-5,-7 -12,-2"/>
-          </svg>
-        </div>
         <h3>Field Day, over one large cube</h3>
         <p>A tumbler, a single big piece of ice so it doesn't water down, a strip of lemon peel across the top. The citrus in the leaf comes forward and stays there.</p>
       </div>
       <div class="v">
-        <div class="vis" aria-hidden="true">
-          <svg viewBox="0 0 140 150" width="140" height="150">
-            <path class="liq" d="M35,55 Q70,62 105,55 Q100,79 70,81 Q40,79 35,55 Z"/>
-            <ellipse class="head" cx="70" cy="58" rx="33" ry="4.5" fill="rgba(226,244,224,.75)"/>
-            <circle class="bub" cx="62" cy="74" r="1.4" fill="rgba(226,244,224,.8)"/>
-            <circle class="bub b2" cx="74" cy="76" r="1.2" fill="rgba(226,244,224,.8)"/>
-            <circle class="bub b3" cx="68" cy="72" r="1" fill="rgba(226,244,224,.8)"/>
-            <path class="glassline" d="M30,48 Q34,82 70,84 Q106,82 110,48"/>
-            <path class="glassline" d="M30,48 Q70,56 110,48" opacity=".35"/>
-            <path class="glassline" d="M70,84 L70,126"/>
-            <path class="glassline" d="M46,131 Q70,138 94,131"/>
-          </svg>
-        </div>
         <h3>Green Hour, in a coupe</h3>
         <p>Shake the can hard, pour it cold and unhurried into something with a stem. It holds a fine head for about a minute. That minute is the point.</p>
       </div>
       <div class="v">
-        <div class="vis" aria-hidden="true">
-          <svg viewBox="0 0 140 150" width="140" height="150">
-            <ellipse class="glow" cx="70" cy="102" rx="56" ry="36" fill="rgba(198,163,76,.14)"/>
-            <rect x="42" y="78" width="24" height="57" rx="3" fill="rgba(246,242,231,.12)" stroke="rgba(246,242,231,.6)" stroke-width="1.2"/>
-            <line x1="46" y1="92" x2="62" y2="92" stroke="rgba(198,163,76,.5)" stroke-width="1"/>
-            <rect x="76" y="64" width="24" height="71" rx="3" fill="rgba(30,122,86,.35)" stroke="rgba(198,163,76,.5)" stroke-width="1.2"/>
-            <line x1="80" y1="78" x2="96" y2="78" stroke="rgba(198,163,76,.5)" stroke-width="1"/>
-            <g class="shine">
-              <line x1="48" y1="84" x2="48" y2="129" stroke="rgba(255,255,255,.18)" stroke-width="2"/>
-              <line x1="82" y1="70" x2="82" y2="129" stroke="rgba(255,255,255,.18)" stroke-width="2"/>
-            </g>
-            <line x1="22" y1="136" x2="118" y2="136" stroke="rgba(198,163,76,.55)" stroke-width="1.2"/>
-          </svg>
-        </div>
         <h3>Either one, at the bar</h3>
         <p>Both are built to sit on a back bar and be ordered out loud. Ask for them by name in the places pouring them this autumn.</p>
       </div>
@@ -713,7 +507,7 @@ footer{border-top:1px solid var(--hair);padding:46px 0 66px}
         <p>Green. Properly green. Far closer to iced tea and matcha than to whatever you are currently picturing.</p>
       </div>
     </div>
-    <p class="quiet rv">Everything else — the farms, the leaf, how it is made and how it is classified — will be written out plainly before the first run ships.</p>
+    <p class="quiet rv">Everything else — the farms, the leaf, how it is made and how it is classified — is written out plainly for anyone who wants it.</p>
   </div>
 </section>
 
@@ -728,8 +522,7 @@ footer{border-top:1px solid var(--hair);padding:46px 0 66px}
       <li><i></i><span>The address of every bar pouring it, the week they get it.</span></li>
     </ul>
     <form class="form" id="wl">
-      <input type="email" id="em" name="email" placeholder="your email" aria-label="Email address"
-        autocomplete="email" inputmode="email" spellcheck="false" required>
+      <input type="email" id="em" placeholder="your email" aria-label="Email address" required>
       <button class="btn" type="submit">Take my place</button>
     </form>
     <p class="small" id="note">One email when it is ready. Nothing else, ever.</p>
@@ -749,16 +542,8 @@ footer{border-top:1px solid var(--hair);padding:46px 0 66px}
 
 <footer>
   <div class="wrap foot">
-    <div>
-      <div class="mark">HempTcha<sup>™</sup></div>
-      <div class="fnav">
-        <a href="#story">The plant</a>
-        <a href="#drinks">The drinks</a>
-        <a href="#serve">How to serve</a>
-        <a href="#join">The queue</a>
-      </div>
-    </div>
-    <p class="legal">HempTcha is a herbal infusion made from hemp leaf. No health or medicinal claims are made. Field Day and Green Hour are in development and not yet available for sale; this page is a concept preview and not an offer. © <span id="yr">2026</span> HempTcha.</p>
+    <div class="mark">HempTcha<sup>™</sup></div>
+    <p class="legal">HempTcha is a herbal infusion made from hemp leaf. No health or medicinal claims are made. Field Day and Green Hour are in development and not yet available for sale; this page is a concept preview and not an offer.</p>
   </div>
 </footer>
 
@@ -839,6 +624,7 @@ footer{border-top:1px solid var(--hair);padding:46px 0 66px}
       // hand brushing through
       let push=0;
       if(pointer.on){
+        const tipY=st.y-st.len;
         const dx=st.x-pointer.x, dy=(st.y-st.len*0.55)-pointer.y;
         const dist=Math.sqrt(dx*dx+dy*dy);
         const r=150+st.d*140;
@@ -929,356 +715,20 @@ footer{border-top:1px solid var(--hair);padding:46px 0 66px}
     .observe(document.querySelector('.hero'));
 })();
 
-/* ---------- the pour: sparkling tea fills the block as you scroll ---------- */
+/* ---------- the pour: liquid fills as you scroll through the band ---------- */
 (function(){
-  const band=document.getElementById('pourband');
-  const liq=document.getElementById('liq');
-  const cv=document.getElementById('tea');
-  if(!band||!liq||!cv) return;
-  const ctx=cv.getContext('2d');
-  const still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let W=0,H=0,DPR=1,t=0,raf=null,visible=false;
-  const bubbles=[], sparks=[], swirls=[];
-
-  function rebuild(){
-    DPR=Math.min(window.devicePixelRatio||1,2);
-    W=band.clientWidth;
-    H=band.clientHeight;
-    cv.width=Math.max(1,W*DPR);
-    cv.height=Math.max(1,H*DPR);
-    ctx.setTransform(DPR,0,0,DPR,0,0);
-    bubbles.length=0; sparks.length=0; swirls.length=0;
-    const n=Math.round(W*0.07);
-    for(let i=0;i<n;i++){
-      bubbles.push({
-        x:Math.random()*W,
-        y:Math.random()*H,
-        r:1.1+Math.random()*3.2,
-        sp:0.35+Math.random()*0.75,
-        drift:(Math.random()-0.5)*0.45,
-        ph:Math.random()*Math.PI*2
-      });
-    }
-    for(let i=0;i<Math.round(W*0.14);i++){
-      sparks.push({
-        x:Math.random()*W,
-        y:Math.random()*H,
-        s:1.8+Math.random()*3.4,
-        ph:Math.random()*Math.PI*2,
-        sp:0.8+Math.random()*1.6,
-        gold:Math.random()>0.4
-      });
-    }
-    for(let i=0;i<9;i++){
-      swirls.push({
-        x:W*(0.08+i*0.1)+Math.random()*50,
-        y:H*(0.2+Math.random()*0.55),
-        rx:50+Math.random()*110,
-        ry:80+Math.random()*140,
-        ph:Math.random()*Math.PI*2,
-        sp:0.00045+Math.random()*0.00055
-      });
-    }
-  }
-
-  function paint(){
-    ctx.clearRect(0,0,W,H);
-    // layered tea body — not one flat colour
-    const base=ctx.createLinearGradient(0,0,0,H);
-    base.addColorStop(0,'#8FD6A8');
-    base.addColorStop(0.18,'#4FB87E');
-    base.addColorStop(0.48,'#2E8B62');
-    base.addColorStop(0.78,'#0C4A34');
-    base.addColorStop(1,'#062219');
-    ctx.fillStyle=base;
-    ctx.fillRect(0,0,W,H);
-
-    // soft depth bands that drift
-    for(let i=0;i<5;i++){
-      const y=H*(0.12+i*0.16)+Math.sin(t*0.00055+i*1.3)*18;
-      const bandG=ctx.createLinearGradient(0,y-30,0,y+40);
-      bandG.addColorStop(0,'rgba(200,245,215,0)');
-      bandG.addColorStop(0.5,'rgba(210,250,220,'+(0.07+i*0.015)+')');
-      bandG.addColorStop(1,'rgba(200,245,215,0)');
-      ctx.fillStyle=bandG;
-      ctx.fillRect(0,y-30,W,70);
-    }
-
-    // moving caustic swirls — light through liquid
-    swirls.forEach((s,i)=>{
-      const cx=s.x+Math.sin(t*s.sp+s.ph)*28;
-      const cy=s.y+Math.cos(t*s.sp*0.85+s.ph)*16;
-      const g=ctx.createRadialGradient(cx,cy,0,cx,cy,s.rx);
-      const a=0.10+0.08*Math.sin(t*0.0011+s.ph);
-      g.addColorStop(0,i%2?('rgba(255,236,180,'+a+')'):('rgba(230,255,240,'+a+')'));
-      g.addColorStop(0.55,'rgba(140,210,170,'+(a*0.35)+')');
-      g.addColorStop(1,'rgba(46,139,98,0)');
-      ctx.beginPath();
-      ctx.ellipse(cx,cy,s.rx,s.ry,Math.sin(t*0.0003+s.ph)*0.35,0,Math.PI*2);
-      ctx.fillStyle=g;
-      ctx.fill();
-    });
-
-    // rising bubbles
-    bubbles.forEach(b=>{
-      if(!still){
-        b.y-=b.sp;
-        b.x+=Math.sin(t*0.001+b.ph)*b.drift;
-        if(b.y<-6){ b.y=H+6; b.x=Math.random()*W; }
-      }
-      ctx.beginPath();
-      ctx.arc(b.x,b.y,b.r,0,Math.PI*2);
-      ctx.fillStyle='rgba(246,255,244,'+(0.25+b.r*0.12)+')';
-      ctx.fill();
-      ctx.beginPath();
-      ctx.arc(b.x-b.r*0.3,b.y-b.r*0.3,b.r*0.35,0,Math.PI*2);
-      ctx.fillStyle='rgba(255,255,255,.45)';
-      ctx.fill();
-    });
-
-    // sparkling flecks
-    sparks.forEach(s=>{
-      const tw=0.25+0.75*Math.abs(Math.sin((still?s.ph*3:t*0.0022*s.sp)+s.ph));
-      if(tw<0.28) return;
-      const half=s.s;
-      ctx.save();
-      ctx.translate(s.x+Math.sin((still?0:t)*0.0004+s.ph)*6, s.y+Math.cos((still?0:t)*0.00035+s.ph)*4);
-      ctx.rotate(Math.PI/4);
-      ctx.globalAlpha=tw*(s.gold?0.95:0.8);
-      ctx.fillStyle=s.gold?'#F0D48A':'#F6FFF4';
-      ctx.fillRect(-half/2,-half/2,half,half);
-      ctx.restore();
-    });
-
-    // surface shimmer near the top of the filled block
-    const topG=ctx.createLinearGradient(0,0,0,36);
-    topG.addColorStop(0,'rgba(246,255,244,.35)');
-    topG.addColorStop(1,'rgba(246,255,244,0)');
-    ctx.fillStyle=topG;
-    ctx.fillRect(0,0,W,36);
-  }
-
-  function frame(now){
-    t=now||0;
-    paint();
-    if(!still&&visible) raf=requestAnimationFrame(frame);
-    else raf=null;
-  }
-  function start(){
-    visible=true;
-    if(!raf&&!still) raf=requestAnimationFrame(frame);
-    else if(still) paint();
-  }
-  function stop(){
-    visible=false;
-    if(raf){ cancelAnimationFrame(raf); raf=null; }
-  }
-
-  function setFill(){
+  const band=document.getElementById('pourband'), liq=document.getElementById('liq');
+  if(!band||!liq) return;
+  function set(){
     const r=band.getBoundingClientRect();
     const total=r.height+window.innerHeight;
     const seen=Math.min(Math.max(window.innerHeight-r.top,0),total);
-    const p=Math.min(Math.max(seen/total,0),1);
-    const top=Math.max(0,(1-p)*100);
-    liq.style.clipPath='inset('+top+'% 0 0 0)';
-    liq.classList.toggle('filling',p>0.02&&p<0.995);
-    const men=liq.querySelector('.meniscus');
-    if(men) men.style.top=top+'%';
+    const p=Math.min(Math.max((seen/total-0.18)/0.62,0),1);
+    liq.style.height=(p*100)+'%';
   }
-
-  rebuild();
-  paint();
-  setFill();
-  window.addEventListener('scroll',setFill,{passive:true});
-  window.addEventListener('resize',()=>{rebuild(); paint(); setFill();});
-  new IntersectionObserver(es=>es.forEach(e=>{ e.isIntersecting?start():stop(); }),{threshold:0.02})
-    .observe(band);
-  // if already on screen (hash jump / refresh mid-page)
-  const r0=band.getBoundingClientRect();
-  if(r0.bottom>0&&r0.top<window.innerHeight) start();
-})();
-
-/* ---------- the powder: cream ground — green matcha nebula ---------- */
-(function(){
-  const band=document.getElementById('powderband');
-  const cv=document.getElementById('dust');
-  if(!band||!cv) return;
-  const ctx=cv.getContext('2d');
-  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let W=0,H=0,DPR=1,raf=null,visible=false,last=0,t=0,touched=false,ambientAt=0;
-  let sand=null;
-  const particles=[];
-  const ptr={x:-9999,y:-9999,px:-9999,py:-9999,vx:0,vy:0};
-  const hint=document.getElementById('dusthint');
-
-  const COLS=[
-    [74,118,52],
-    [98,148,68],
-    [122,176,82],
-    [148,196,98],
-    [170,210,120]
-  ];
-
-  function makeSand(){
-    const c=document.createElement('canvas');
-    c.width=Math.max(1,W*DPR); c.height=Math.max(1,H*DPR);
-    const x=c.getContext('2d');
-    x.setTransform(DPR,0,0,DPR,0,0);
-    const g=x.createLinearGradient(0,0,0,H);
-    g.addColorStop(0,'#f7f3ea');
-    g.addColorStop(0.55,'#f1ebe0');
-    g.addColorStop(1,'#ebe4d6');
-    x.fillStyle=g; x.fillRect(0,0,W,H);
-    const n=Math.min(4000, Math.round(W*H*0.006));
-    for(let i=0;i<n;i++){
-      const px=Math.random()*W, py=Math.random()*H;
-      x.fillStyle='rgba(60,70,50,'+(0.02+Math.random()*0.04)+')';
-      x.fillRect(px,py,0.6+Math.random()*0.8,0.6+Math.random()*0.8);
-    }
-    return c;
-  }
-
-  function resize(){
-    DPR=Math.min(window.devicePixelRatio||1,2);
-    W=band.clientWidth; H=band.clientHeight;
-    cv.width=Math.max(1,W*DPR); cv.height=Math.max(1,H*DPR);
-    ctx.setTransform(DPR,0,0,DPR,0,0);
-    sand=makeSand();
-    particles.length=0;
-    // seed a visible ambient cloud so the section isn't empty
-    seedAmbient(1);
-    paint();
-  }
-
-  function spawnAt(ox, oy, n, strength, lift){
-    const max=3600;
-    for(let i=0;i<n;i++){
-      if(particles.length>=max) break;
-      const ang=Math.random()*Math.PI*2;
-      const dist=Math.random()*(lift?48:70);
-      const col=COLS[(Math.random()*COLS.length)|0];
-      particles.push({
-        x: ox + Math.cos(ang)*dist,
-        y: oy + Math.sin(ang)*dist*(lift?0.55:0.85),
-        vx: (lift?ptr.vx*0.05:0) + (Math.random()-0.5)*0.45*strength,
-        vy: (lift?ptr.vy*0.03:0) - (0.18+Math.random()*0.4)*strength*(lift?1:0.35),
-        life:0,
-        span:2200+Math.random()*3200,
-        r:0.7+Math.random()*2.2,
-        col,
-        seed:Math.random()*1000
-      });
-    }
-  }
-
-  function seedAmbient(bursts){
-    for(let b=0;b<bursts;b++){
-      const ox=W*(0.22+Math.random()*0.56);
-      const oy=H*(0.35+Math.random()*0.4);
-      spawnAt(ox, oy, 55+((Math.random()*40)|0), 0.7+Math.random()*0.5, false);
-    }
-  }
-
-  function ambient(dt){
-    ambientAt+=dt;
-    // soft ongoing cloud so people always see something to play with
-    if(ambientAt>220){
-      ambientAt=0;
-      const ox=W*(0.15+Math.random()*0.7);
-      const oy=H*(0.28+Math.random()*0.5);
-      spawnAt(ox, oy, touched?10:22, 0.55, false);
-    }
-    // until first touch, a bigger inviting bloom near the headline
-    if(!touched && ambientAt===0 && Math.random()<0.35){
-      spawnAt(W*0.5, H*0.48, 40, 0.85, false);
-    }
-  }
-
-  function lift(){
-    const speed=Math.hypot(ptr.vx, ptr.vy);
-    if(speed<0.4 || ptr.x<-9000) return;
-    // denser + bigger on touch
-    const n=Math.min(70, 18+Math.floor(speed*3.2));
-    spawnAt(ptr.x, ptr.y, n, Math.min(2.1, 0.85+speed*0.1), true);
-  }
-
-  function step(dt){
-    for(let i=particles.length-1;i>=0;i--){
-      const p=particles[i];
-      p.life+=dt;
-      if(p.life>=p.span){ particles.splice(i,1); continue; }
-      const swirl=Math.sin(t*0.0004+p.seed)*0.014;
-      p.vx+=swirl + (Math.random()-0.5)*0.004;
-      p.vy+=-0.01;
-      p.vx*=0.986; p.vy*=0.989;
-      p.x+=p.vx*(dt/16);
-      p.y+=p.vy*(dt/16);
-    }
-  }
-
-  function paint(){
-    ctx.setTransform(1,0,0,1,0,0);
-    ctx.clearRect(0,0,cv.width,cv.height);
-    if(sand) ctx.drawImage(sand,0,0);
-    ctx.setTransform(DPR,0,0,DPR,0,0);
-
-    for(let i=0;i<particles.length;i++){
-      const p=particles[i];
-      const k=p.life/p.span;
-      const alpha = k<0.1 ? (k/0.1)*0.7 : 0.7*Math.pow(1-(k-0.1)/0.9, 1.35);
-      const bloom=p.r*(1.4+k*2.6);
-      const [r,g,b]=p.col;
-
-      const grd=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,bloom*2.8);
-      grd.addColorStop(0,'rgba('+r+','+g+','+b+','+(alpha*0.95).toFixed(3)+')');
-      grd.addColorStop(0.4,'rgba('+r+','+g+','+b+','+(alpha*0.38).toFixed(3)+')');
-      grd.addColorStop(1,'rgba('+r+','+g+','+b+',0)');
-      ctx.fillStyle=grd;
-      ctx.beginPath(); ctx.arc(p.x,p.y,bloom*2.8,0,Math.PI*2); ctx.fill();
-    }
-  }
-
-  function frame(now){
-    const dt=Math.min((now-last)||16,34); last=now; t+=dt;
-    ptr.vx*=0.86; ptr.vy*=0.86;
-    if(!reduced) ambient(dt);
-    lift(); step(dt); paint();
-    if(visible&&!reduced) raf=requestAnimationFrame(frame);
-    else raf=null;
-  }
-
-  function start(){
-    visible=true;
-    if(reduced){ paint(); return; }
-    if(!raf){ last=0; raf=requestAnimationFrame(frame); }
-  }
-  function stop(){
-    visible=false;
-    if(raf){ cancelAnimationFrame(raf); raf=null; }
-  }
-
-  function onMove(e){
-    const r=cv.getBoundingClientRect();
-    const x=e.clientX-r.left, y=e.clientY-r.top;
-    if(ptr.px>-9000){ ptr.vx=x-ptr.px; ptr.vy=y-ptr.py; }
-    ptr.px=ptr.x=x; ptr.py=ptr.y=y;
-    if(!touched){
-      touched=true;
-      if(hint) hint.classList.add('gone');
-    }
-  }
-
-  band.addEventListener('pointermove', onMove, {passive:true});
-  band.addEventListener('pointerleave', ()=>{
-    ptr.x=ptr.y=ptr.px=ptr.py=-9999; ptr.vx=ptr.vy=0;
-  });
-
-  resize();
-  let rt=null;
-  window.addEventListener('resize', ()=>{ clearTimeout(rt); rt=setTimeout(resize,180); });
-  new IntersectionObserver(es=>es.forEach(e=>{ e.isIntersecting?start():stop(); }),{threshold:0.02}).observe(band);
-  const r0=band.getBoundingClientRect();
-  if(r0.bottom>0&&r0.top<window.innerHeight) start();
+  window.addEventListener('scroll',set,{passive:true});
+  window.addEventListener('resize',set);
+  set();
 })();
 
 /* ---------- whisked matcha swirl ---------- */
@@ -1345,23 +795,20 @@ footer{border-top:1px solid var(--hair);padding:46px 0 66px}
   }),{threshold:.35}).observe(rail);
 })();
 
-function dew(el,count){
-  const layer=el && el.querySelector('.dew');
-  if(!layer) return;
+function condense(el,count){
   for(let i=0;i<count;i++){
     const d=document.createElement('span');
     d.className='drop';
-    d.style.left=(8+Math.random()*84)+'%';
-    d.style.height=(5+Math.random()*14)+'px';
-    d.style.animationDuration=(6+Math.random()*8)+'s';
-    d.style.animationDelay=(Math.random()*9)+'s';
-    layer.appendChild(d);
+    d.style.left=(6+Math.random()*88)+'%';
+    d.style.height=(6+Math.random()*18)+'px';
+    d.style.animationDuration=(5+Math.random()*7)+'s';
+    d.style.animationDelay=(Math.random()*8)+'s';
+    el.appendChild(d);
   }
 }
-dew(document.getElementById('t1'),10);
-dew(document.getElementById('t2'),14);
-dew(document.getElementById('cc'),16);
-dew(document.getElementById('dc'),14);
+condense(document.getElementById('t1'),13);
+condense(document.getElementById('t2'),19);
+const cc=document.getElementById('cc'); if(cc) condense(cc,22);
 
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
@@ -1374,31 +821,13 @@ document.getElementById('wl').addEventListener('submit',e=>{
   document.getElementById('note').style.display='none';
   document.getElementById('done').classList.add('on');
 });
-const shareUrl=(location.origin&&location.origin!=='null'&&location.protocol!=='file:')
-  ? location.origin+'/?r=you' : 'https://hemptcha.com/?r=you'; // placeholder domain until live
 document.getElementById('copy').addEventListener('click',e=>{
-  navigator.clipboard&&navigator.clipboard.writeText(shareUrl);
+  navigator.clipboard&&navigator.clipboard.writeText(location.origin+'/?r=you');
   e.target.textContent='Copied';
 });
 document.getElementById('wa').addEventListener('click',()=>{
-  window.open('https://wa.me/?text='+encodeURIComponent('Join me in the queue for HempTcha — Field Day and Green Hour. '+shareUrl),'_blank','noopener');
+  window.open('https://wa.me/?text='+encodeURIComponent('Join me in the queue for HempTcha — Field Day and Green Hour. '+location.origin),'_blank');
 });
-
-/* ---------- nav ---------- */
-(function(){
-  const nav=document.getElementById('nav');
-  const onScroll=()=>nav.classList.toggle('scrolled',window.scrollY>10);
-  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
-  const burger=document.getElementById('burger'), mnav=document.getElementById('mnav');
-  burger.addEventListener('click',()=>{
-    const open=mnav.classList.toggle('open');
-    burger.setAttribute('aria-expanded',open);
-  });
-  mnav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
-    mnav.classList.remove('open'); burger.setAttribute('aria-expanded','false');
-  }));
-})();
-document.getElementById('yr').textContent=new Date().getFullYear();
 </script>
 </body>
 </html>

@@ -1,0 +1,8 @@
+.git
+.gitignore
+hemptcha-v8.html
+hemptcha-v9.html
+hemptcha-v10.html
+hemptcha-v11.html
+*.md
+.DS_Store
