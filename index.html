@@ -135,10 +135,14 @@ nav.scrolled{background:rgba(243,239,230,.9);-webkit-backdrop-filter:blur(12px);
 .can-frame{position:absolute;inset:0;border-radius:3px;overflow:hidden;
   display:flex;flex-direction:column;padding:18px 14px 16px}
 .field .can-frame{background:linear-gradient(172deg,#f6edd7 0%,#ece1c5 58%,#d6c6a3 100%);color:#1d2e23}
-.matcha .can-frame{background:linear-gradient(172deg,#0c2f23 0%,#061510 100%);color:var(--bone)}
+.matcha .can-frame{
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.07) 0%,transparent 26%,transparent 70%,rgba(0,0,0,.28) 100%),
+    linear-gradient(172deg,#0e382a 0%,#0c2f23 48%,#061510 100%);
+  color:#F6F2E7}
 .can-frame::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;
   background:radial-gradient(120% 60% at 30% 0%,rgba(255,255,255,.18),transparent 60%)}
-.matcha .can-frame::before{background:radial-gradient(120% 60% at 30% 0%,rgba(255,255,255,.06),transparent 60%)}
+.matcha .can-frame::before{background:radial-gradient(120% 55% at 28% 6%,rgba(255,255,255,.28),transparent 58%);opacity:.85}
 
 .can-head{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:baseline;font-size:6.5px;letter-spacing:.28em;text-transform:uppercase;opacity:.55}
 .can-head .num{font-family:'Bodoni Moda';font-style:italic;font-size:14px;letter-spacing:0;opacity:.9}
