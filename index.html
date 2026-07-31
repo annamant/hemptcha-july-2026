@@ -69,29 +69,40 @@ a{color:inherit}
 .sound-hint.gone{opacity:0}
 @media(max-width:700px){.sound-hint{display:none}}
 
-/* the field */
+/* the field — day/night overlays blend with --night (0 day → 1 night) */
 .fieldwrap{position:absolute;inset:0;z-index:0;overflow:hidden}
 #field{position:absolute;inset:0;width:100%;height:100%;display:block}
+.fieldwrap::before{
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:1;
+  opacity:var(--night,0);
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.9) 0%, rgba(0,0,0,.28) 34%, rgba(0,0,0,.06) 55%, rgba(0,0,0,.45) 88%, #000 100%),
+    linear-gradient(90deg, rgba(0,0,0,.78) 0%, rgba(0,0,0,.2) 46%, transparent 72%);
+}
 .fieldwrap::after{
-  content:'';position:absolute;inset:0;pointer-events:none;
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:1;
+  opacity:calc(1 - var(--night,0));
   background:
     linear-gradient(180deg, rgba(244,244,242,.94) 0%, rgba(244,244,242,.4) 26%, rgba(244,244,242,0) 48%, rgba(244,244,242,.12) 88%, #F4F4F2 100%),
     linear-gradient(90deg, rgba(244,244,242,.9) 0%, rgba(244,244,242,.28) 40%, transparent 68%);
 }
 @media(max-width:900px){
+  .fieldwrap::before{background:
+    linear-gradient(180deg, rgba(0,0,0,.92) 0%, rgba(0,0,0,.45) 40%, rgba(0,0,0,.55) 82%, #000 100%)}
   .fieldwrap::after{background:
     linear-gradient(180deg, rgba(244,244,242,.94) 0%, rgba(244,244,242,.35) 34%, rgba(244,244,242,.2) 78%, #F4F4F2 100%)}
 }
 .hero .wrap{position:relative;z-index:2}
 .brush{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:3;
-  font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--bone);opacity:.35;
-  pointer-events:none;transition:opacity .6s ease}
+  font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink,#111);
+  opacity:.4;pointer-events:none;transition:opacity .6s ease,color .25s linear}
 .brush.gone{opacity:0}
 @media(max-width:900px){.brush{font-size:9.5px}}
 .hero-index{position:absolute;right:52px;top:50%;z-index:3;display:flex;align-items:center;gap:14px;
   transform:rotate(90deg) translateX(50%);transform-origin:right center;
-  color:rgba(17,17,17,.45);font-size:9px;letter-spacing:.28em;text-transform:uppercase;opacity:.85}
-.hero-index::before{content:'';display:block;width:54px;height:1px;background:rgba(17,17,17,.35);opacity:.7}
+  color:var(--ink,#111);font-size:9px;letter-spacing:.28em;text-transform:uppercase;opacity:.55;
+  transition:color .25s linear}
+.hero-index::before{content:'';display:block;width:54px;height:1px;background:var(--ink,#111);opacity:.45}
 @media(max-width:900px){.hero-index{right:20px;top:auto;bottom:28px;transform:none;font-size:8px}.hero-index::before{width:28px}}
 .grain{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.055;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")}
@@ -130,10 +141,12 @@ nav.scrolled .nav-cta:hover{background:var(--bone);color:var(--void);border-colo
 .nav-cta{border-color:currentColor}
 .nav.scrolled .nav-cta{border-color:var(--hair)}
 
-/* hero */
-.hero{position:relative;padding:64px 0 104px;overflow:hidden;min-height:88vh;display:flex;flex-direction:column;justify-content:center;background:#F4F4F2}
+/* hero — day (white) → night (black) via --night 0..1 */
+.hero{position:relative;padding:64px 0 104px;overflow:hidden;min-height:88vh;display:flex;flex-direction:column;justify-content:center;
+  --night:0; --ink:#111111; --paper:#F4F4F2;
+  background:var(--paper)}
 .hero::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:radial-gradient(circle 220px at var(--mx,50%) var(--my,48%),rgba(17,17,17,.04),transparent 72%);
+  background:radial-gradient(circle 220px at var(--mx,50%) var(--my,48%),rgba(17,17,17,calc(.04 + var(--night)*.08)),transparent 72%);
   transition:background .2s ease}
 .hero-grid{display:grid;gap:56px;align-items:center}
 @media(min-width:960px){.hero-grid{grid-template-columns:1.08fr .92fr;gap:64px}}
@@ -151,16 +164,16 @@ nav.scrolled .nav-cta:hover{background:var(--bone);color:var(--void);border-colo
 .btn-q:hover{opacity:1}
 
 
-/* hero type on white void — black ink, colour only in grass + cans */
-.hero .lbl{color:var(--bone);opacity:.45}
-.hero h1,.hero .lede,.hero .dry,.hero .btn-q,.hero .spec strong{color:var(--bone)}
-.hero h1 i{color:var(--bone);opacity:.55}
+/* hero type follows day→night ink */
+.hero .lbl{color:var(--ink);opacity:.45;transition:color .25s linear,opacity .25s linear}
+.hero h1,.hero .lede,.hero .dry,.hero .btn-q,.hero .spec strong{color:var(--ink);transition:color .25s linear}
+.hero h1 i{color:var(--ink);opacity:.55}
 .hero .dry{opacity:.55}
-.hero .spec{border-top-color:var(--hair)}
-.hero .spec .lbl{color:var(--bone);opacity:.45}
-.brush{color:var(--bone);opacity:.4}
-.hero .btn{background:var(--bone);color:var(--void)}
-.hero .btn:hover{background:#000}
+.hero .spec{border-top-color:color-mix(in srgb, var(--ink) 18%, transparent);transition:border-color .25s linear}
+.hero .spec .lbl{color:var(--ink);opacity:.45}
+.hero .btn{background:var(--ink);color:var(--paper);transition:background .25s linear,color .25s linear}
+.hero .btn:hover{filter:brightness(1.08)}
+.hero .btn-q{border-bottom-color:color-mix(in srgb, var(--ink) 18%, transparent)}
 /* cans — editorial spine, v11 */
 .stage{display:flex;justify-content:center;align-items:flex-end;gap:50px;min-height:460px;perspective:900px}
 .can{position:relative;width:128px;height:340px;
@@ -947,6 +960,27 @@ const Sound = (function(){
   let W=0,H=0,DPR=1,stalks=[],horizon=0,t=0,raf=null,last=0;
   const pointer={x:-9999,y:-9999,on:false};
   let tiltX=0, tiltY=0;
+  let night=0, skyRGB='rgb(244,244,242)';
+  const heroEl=document.querySelector('.hero');
+  // ~16s full day→night→day — clear white and black, quick dusk
+  const DAY_MS=16000;
+
+  function setNight(n){
+    night=Math.max(0,Math.min(1,n));
+    const pr=Math.round(244*(1-night));
+    const pg=Math.round(244*(1-night));
+    const pb=Math.round(242*(1-night));
+    skyRGB='rgb('+pr+','+pg+','+pb+')';
+    const ir=Math.round(17+(244-17)*night);
+    const ig=Math.round(17+(244-17)*night);
+    const ib=Math.round(17+(242-17)*night);
+    if(heroEl){
+      heroEl.style.setProperty('--night', String(night));
+      heroEl.style.setProperty('--paper', skyRGB);
+      heroEl.style.setProperty('--ink', 'rgb('+ir+','+ig+','+ib+')');
+      heroEl.style.backgroundColor=skyRGB;
+    }
+  }
 
   function build(){
     DPR=Math.min(window.devicePixelRatio||1,1.75);
@@ -986,7 +1020,17 @@ const Sound = (function(){
 
   function draw(now){
     const dt=Math.min(32,(now-(last||now))||16); last=now; t+=dt;
-    ctx.fillStyle='#F4F4F2';
+    // clock-based day/night — independent of frame hitching
+    if(!still){
+      const phase=((now%DAY_MS)+DAY_MS)%DAY_MS/DAY_MS;
+      // linger near day (0) and night (1); cross dusk quickly
+      let s=Math.cos(phase*Math.PI*2); // +1 day, -1 night
+      s=Math.sign(s)*Math.pow(Math.abs(s),0.35);
+      setNight(0.5-0.5*s);
+    } else {
+      setNight(0);
+    }
+    ctx.fillStyle=skyRGB;
     ctx.fillRect(0,0,W,H);
     const gust=Math.sin(t*0.00042)*0.5+Math.sin(t*0.00017)*0.5;
     const scrollKick=Vel.abs()*0.02;
@@ -1059,7 +1103,6 @@ const Sound = (function(){
 
   const brush=document.getElementById('brush');
   cv.parentElement.style.pointerEvents='none';
-  const heroEl=document.querySelector('.hero');
   heroEl.addEventListener('pointermove',e=>{
     const r=cv.getBoundingClientRect();
     pointer.x=e.clientX-r.left; pointer.y=e.clientY-r.top; pointer.on=true;
@@ -1096,12 +1139,15 @@ const Sound = (function(){
   }
   if(window.matchMedia('(pointer:coarse)').matches) tryTilt();
 
-  build(); draw(performance.now()); start();
+  build();
+  setNight(0);
+  draw(performance.now());
+  start();
 
   let rt=null;
   window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{build();draw(performance.now());},180)});
   new IntersectionObserver(es=>{es.forEach(e=>{ e.isIntersecting?start():stop(); })},{threshold:0.02})
-    .observe(document.querySelector('.hero'));
+    .observe(heroEl);
 })();
 
 
