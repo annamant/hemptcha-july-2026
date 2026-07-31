@@ -962,8 +962,8 @@ const Sound = (function(){
   let tiltX=0, tiltY=0;
   let night=0, skyRGB='rgb(244,244,242)';
   const heroEl=document.querySelector('.hero');
-  // ~16s full day→night→day — clear white and black, quick dusk
-  const DAY_MS=16000;
+  // ~7s full day→night→day — readable in a few seconds on the hero
+  const DAY_MS=7000;
 
   function setNight(n){
     night=Math.max(0,Math.min(1,n));
@@ -1023,10 +1023,8 @@ const Sound = (function(){
     // clock-based day/night — independent of frame hitching
     if(!still){
       const phase=((now%DAY_MS)+DAY_MS)%DAY_MS/DAY_MS;
-      // linger near day (0) and night (1); cross dusk quickly
-      let s=Math.cos(phase*Math.PI*2); // +1 day, -1 night
-      s=Math.sign(s)*Math.pow(Math.abs(s),0.35);
-      setNight(0.5-0.5*s);
+      // smooth cosine ease — no hard snap through dusk
+      setNight(0.5-0.5*Math.cos(phase*Math.PI*2));
     } else {
       setNight(0);
     }
