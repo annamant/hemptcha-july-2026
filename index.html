@@ -962,8 +962,8 @@ const Sound = (function(){
   let tiltX=0, tiltY=0;
   let night=0, skyRGB='rgb(244,244,242)';
   const heroEl=document.querySelector('.hero');
-  // ~7s full day→night→day — readable in a few seconds on the hero
-  const DAY_MS=7000;
+  // ~14s full day→night→day
+  const DAY_MS=14000;
 
   function setNight(n){
     night=Math.max(0,Math.min(1,n));
